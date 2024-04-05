@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6d70c40c7e4023a7d9fc6636ea8303, type: 3}
+  m_Name: SkinSO
+  m_EditorClassIdentifier: 
+  dataList:
+  - player: {fileID: 7417903303546999019, guid: 1825aa84f9db3aa48a7a1065f05da1b4, type: 3}
+    poolType: 9
+    attackRangeBonusPercent: 8
+    moveSpeedBonusPercent: 0
+    goldBonusPercent: 0
+    price: 2500
+  - player: {fileID: 6794746298275478665, guid: ae7c546f4c27f59448642fef880d762d, type: 3}
+    poolType: 8
+    attackRangeBonusPercent: 0
+    moveSpeedBonusPercent: 11
+    goldBonusPercent: 0
+    price: 2500
