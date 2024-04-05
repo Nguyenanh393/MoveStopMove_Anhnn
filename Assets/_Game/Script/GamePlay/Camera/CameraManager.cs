@@ -11,7 +11,7 @@ namespace _Game.Script.GamePlay.Camera
         public CameraFlow GetCamera => cameraFlow;
         public void SetPosition(Vector3 position)
         {
-            cameraFlow.transform.position = position;
+            cameraFlow.TF.position = position;
         }
     }
 }

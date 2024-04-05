@@ -22,7 +22,7 @@ namespace _Game.Script.GamePlay.Camera
         {
             if (GameManager.IsState(GameState.GamePlay))
             {
-                if (target != null)
+                if (target is not null)
                 {
                     Follow();
                 }
