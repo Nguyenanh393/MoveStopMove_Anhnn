@@ -5,7 +5,7 @@ using UnityEngine;
 namespace _Game.Script.DataSO.ItemData.ShiedData
 {
     [Serializable]
-    public class ShiedData : ItemData<Shied>
+    public class ShieldData : ItemData<Shield>
     {
         [SerializeField] private float goldBonusPercent;
     }

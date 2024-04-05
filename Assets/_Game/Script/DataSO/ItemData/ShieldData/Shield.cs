@@ -2,7 +2,7 @@
 
 namespace _Game.Script.DataSO.ItemData.ShiedData
 {
-    public class Shied : MonoBehaviour
+    public class Shield : MonoBehaviour
     {
         
     }

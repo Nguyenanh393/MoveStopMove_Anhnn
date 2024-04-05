@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3e2188d4e694a11903bd78c46984a64, type: 3}
-  m_Name: ShiedSO
+  m_Name: ShieldSO
   m_EditorClassIdentifier: 
   dataList: []
