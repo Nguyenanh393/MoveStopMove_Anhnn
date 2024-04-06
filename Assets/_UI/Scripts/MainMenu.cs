@@ -31,7 +31,7 @@ namespace _UI.Scripts
         public void WeaponShopButton()
         {
             UIManager.Ins.OpenUI<WeaponShop>();
-            UIManager.Ins.GetUI<WeaponShop>().SpawnWeapon();
+            //UIManager.Ins.GetUI<WeaponShop>().SpawnWeapon();
             Close(0);
         }
     }

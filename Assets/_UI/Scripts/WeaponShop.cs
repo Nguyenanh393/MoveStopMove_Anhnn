@@ -1,3 +1,4 @@
+using System;
 using _Game.Script.DataSO.ItemData;
 using _Game.Script.DataSO.WeaponData;
 using UnityEditor;
@@ -21,6 +22,12 @@ namespace _UI.Scripts
         
         private int currentWeaponIndex = 0;
         private WeaponSO weaponSO;
+
+        private void OnEnable()
+        {
+            SpawnWeapon();
+        }
+
         public void ExitButton()
         {
             UIManager.Ins.OpenUI<MainMenu>();
