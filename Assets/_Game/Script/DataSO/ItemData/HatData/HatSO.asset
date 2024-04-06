@@ -13,35 +13,35 @@ MonoBehaviour:
   m_Name: HatSO
   m_EditorClassIdentifier: 
   dataList:
-  - hat: {fileID: -106631955599218622, guid: fba5bd111b43be0448610f209043095b, type: 3}
-    attackRangeBonusPercent: 5
-    hatIcon: {fileID: 21300000, guid: eb69cff6254433d4e9c38084ef04f590, type: 3}
+  - type: {fileID: -106631955599218622, guid: fba5bd111b43be0448610f209043095b, type: 3}
+    TypeIcon: {fileID: 21300000, guid: eb69cff6254433d4e9c38084ef04f590, type: 3}
     price: 500
-  - hat: {fileID: -8670522239803337097, guid: ffc5dbef2973cf74c853c328f6457261, type: 3}
     attackRangeBonusPercent: 5
-    hatIcon: {fileID: 21300000, guid: e18f18b183a01424f8c20f088905e355, type: 3}
+  - type: {fileID: -8670522239803337097, guid: ffc5dbef2973cf74c853c328f6457261, type: 3}
+    TypeIcon: {fileID: 21300000, guid: e18f18b183a01424f8c20f088905e355, type: 3}
     price: 500
-  - hat: {fileID: 1454463265039901951, guid: 2ad1f49cfab9709468ef1adc25ff7265, type: 3}
     attackRangeBonusPercent: 5
-    hatIcon: {fileID: 21300000, guid: 5c06bab390a79764d8d0539b57b1cf45, type: 3}
+  - type: {fileID: 1454463265039901951, guid: 2ad1f49cfab9709468ef1adc25ff7265, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 5c06bab390a79764d8d0539b57b1cf45, type: 3}
     price: 500
-  - hat: {fileID: -3518169175389207623, guid: a5051d230e3445340aee87304c84a220, type: 3}
     attackRangeBonusPercent: 5
-    hatIcon: {fileID: 21300000, guid: da18f161bc01907449ffa4e6f5b50614, type: 3}
+  - type: {fileID: -3518169175389207623, guid: a5051d230e3445340aee87304c84a220, type: 3}
+    TypeIcon: {fileID: 21300000, guid: da18f161bc01907449ffa4e6f5b50614, type: 3}
     price: 500
-  - hat: {fileID: 1747697863132405740, guid: 47e8613aab503c741ad073d030fa4ddd, type: 3}
     attackRangeBonusPercent: 5
-    hatIcon: {fileID: 21300000, guid: 1cbb565e6302e234e82c3d5766667afd, type: 3}
+  - type: {fileID: 1747697863132405740, guid: 47e8613aab503c741ad073d030fa4ddd, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 1cbb565e6302e234e82c3d5766667afd, type: 3}
     price: 500
-  - hat: {fileID: -6888021700076362658, guid: dc7dd623255a0f745b4f4d414f51d385, type: 3}
     attackRangeBonusPercent: 5
-    hatIcon: {fileID: 21300000, guid: 618234528de04654db5493d4d04dbbf2, type: 3}
+  - type: {fileID: -6888021700076362658, guid: dc7dd623255a0f745b4f4d414f51d385, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 618234528de04654db5493d4d04dbbf2, type: 3}
     price: 500
-  - hat: {fileID: 5196207727371800290, guid: 72e784a3e2ffe5249a4244c965ec263b, type: 3}
     attackRangeBonusPercent: 5
-    hatIcon: {fileID: 21300000, guid: 578c1840f64bd634bad62c6f60eba249, type: 3}
+  - type: {fileID: 5196207727371800290, guid: 72e784a3e2ffe5249a4244c965ec263b, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 578c1840f64bd634bad62c6f60eba249, type: 3}
     price: 500
-  - hat: {fileID: 5758976317767717915, guid: 602a47d6ef1c53f45b8d7ce668b687c2, type: 3}
     attackRangeBonusPercent: 5
-    hatIcon: {fileID: 21300000, guid: 703801d9a7f60c244a3ee076f49edb23, type: 3}
+  - type: {fileID: 5758976317767717915, guid: 602a47d6ef1c53f45b8d7ce668b687c2, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 703801d9a7f60c244a3ee076f49edb23, type: 3}
     price: 500
+    attackRangeBonusPercent: 5
