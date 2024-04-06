@@ -2,7 +2,6 @@ using System;
 using _Game.Script.DataSO.ItemData;
 using _Game.Script.GamePlay.Weapon;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _Game.Script.DataSO.WeaponData
 {

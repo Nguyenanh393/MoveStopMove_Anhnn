@@ -9,10 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0eb1ce7930284545b9f6b40195588f80, type: 3}
   m_Name: WeaponSO
   m_EditorClassIdentifier: Assembly-CSharp:_Game.Script.DataSO.WeaponData:WeaponSo
   dataList:
-  - {type: {fileID: 1680263353409227322, guid: 782bc723927f62e49a73d146bc7be883, type: 3}, TypeIcon: {fileID: 21300000, guid: 79b47bb526f2f407ea5a899bf93524fc, type: 3}, price: 0, attackSpeed: 0, attackRangeBonus: 1, poolType: 2, weaponName: Hammer}
-  - {type: {fileID: 6232137720327004879, guid: d448a092e8406b846b6d9c0201cba575, type: 3}, TypeIcon: {fileID: 21300000, guid: 169d45648e00348038299fc345aa6b4f, type: 3}, price: 0, attackSpeed: 5, attackRangeBonus: 0, poolType: 3, weaponName: Knife}
-  - {type: {fileID: -3162012230312071080, guid: ca361dba8fef3ec4f914df5e51e0859c, type: 3}, TypeIcon: {fileID: 21300000, guid: 0bca651f898f1479c957ebcc1fa23f88, type: 3}, price: 0, attackSpeed: 0, attackRangeBonus: 5, poolType: 1, weaponName: Boomerang}
+  - type: {fileID: 1680263353409227322, guid: 782bc723927f62e49a73d146bc7be883, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 79b47bb526f2f407ea5a899bf93524fc, type: 3}
+    price: 0
+    attackSpeed: 0
+    attackRangeBonus: 1
+    poolType: 2
+    weaponName: Hammer
+  - type: {fileID: 6232137720327004879, guid: d448a092e8406b846b6d9c0201cba575, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 169d45648e00348038299fc345aa6b4f, type: 3}
+    price: 100
+    attackSpeed: 5
+    attackRangeBonus: 0
+    poolType: 3
+    weaponName: Knife
+  - type: {fileID: -3162012230312071080, guid: ca361dba8fef3ec4f914df5e51e0859c, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 0bca651f898f1479c957ebcc1fa23f88, type: 3}
+    price: 400
+    attackSpeed: 0
+    attackRangeBonus: 5
+    poolType: 1
+    weaponName: Boomerang

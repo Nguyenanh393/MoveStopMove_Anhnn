@@ -16,36 +16,18 @@ namespace _Game.Script.DataSO.ItemData
         [SerializeField] private ShieldSO shieldSO;
         [SerializeField] private SkinSetSO skinSetSO;
         [SerializeField] private WeaponSO weaponSO;
-        // public HatSO HatSO => hatSO;
-        // public PantSO PantSO => pantSO;
-        // public ShieldSO ShieldSO => shieldSO;
-        //public WeaponSO WeaponSO => weaponSO;
-        // public SkinSetSO SkinSetSO => skinSetSO;
         
-        private Dictionary<ItemTypeEnum, object> dataSOMap;
-
-        private void Awake()
-        {
-            dataSOMap = new Dictionary<ItemTypeEnum, object>();
-            dataSOMap.Add(ItemTypeEnum.Hat, hatSO);
-            dataSOMap.Add(ItemTypeEnum.Pant, pantSO);
-            dataSOMap.Add(ItemTypeEnum.Shield, shieldSO);
-            dataSOMap.Add(ItemTypeEnum.SkinSet, skinSetSO);
-            dataSOMap.Add(ItemTypeEnum.Weapon, weaponSO);
-        }
+        public HatSO HatSO => hatSO;
+        public PantSO PantSO => pantSO;
+        public ShieldSO ShieldSO => shieldSO;
+        public SkinSetSO SkinSetSO => skinSetSO;
+        public WeaponSO WeaponSO => weaponSO;
         public enum ItemTypeEnum
         {
             Hat,
             Pant,
             Shield,
-            SkinSet,
-            Weapon
+            SkinSet
         }
-
-        public DataSO<T> GetDataSO<T>(ItemTypeEnum itemType)
-        {
-            return (DataSO<T>)dataSOMap[itemType];
-        }
-        
     }
 }

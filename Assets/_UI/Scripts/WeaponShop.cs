@@ -37,7 +37,7 @@ namespace _UI.Scripts
         public void SpawnWeapon()
         {
             // sau sẽ lấy dữ liệu của playerprefs để hiển thị ra màn hình
-            weaponSO = (WeaponSO) ItemDataSOList.Ins.GetDataSO<WeaponData>(ItemDataSOList.ItemTypeEnum.Weapon);
+            weaponSO = ItemDataSOList.Ins.WeaponSO;
             WeaponData weaponData = weaponSO.DataList[currentWeaponIndex];
             weaponIcon.sprite = weaponData.GetTypeIcon;
             weaponName.text = weaponData.WeaponName;
