@@ -8,5 +8,12 @@ namespace _Game.Script.DataSO.ItemData.HatData
     public class HatData : ItemData<Hat>
     {
         [SerializeField] private float attackRangeBonusPercent;
+        
+        public float AttackRangeBonusPercent => attackRangeBonusPercent;
+        
+        public String HatInfo()
+        {
+            return attackRangeBonusPercent + "% Range";
+        }
     }
 }

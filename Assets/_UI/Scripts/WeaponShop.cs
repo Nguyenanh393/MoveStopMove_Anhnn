@@ -9,7 +9,7 @@ namespace _UI.Scripts
 {
     public class WeaponShop : UICanvas
     {
-        [SerializeField] private ItemDataSOList itemDataSOList;
+        //[SerializeField] private ItemDataSOList itemDataSOList;
         
         [SerializeField] private Image weaponIcon;
         
@@ -37,7 +37,7 @@ namespace _UI.Scripts
         public void SpawnWeapon()
         {
             // sau sẽ lấy dữ liệu của playerprefs để hiển thị ra màn hình
-            weaponSO = itemDataSOList.WeaponSO;
+            weaponSO = (WeaponSO) ItemDataSOList.Ins.GetDataSO<WeaponData>(ItemDataSOList.ItemTypeEnum.Weapon);
             WeaponData weaponData = weaponSO.DataList[currentWeaponIndex];
             weaponIcon.sprite = weaponData.GetTypeIcon;
             weaponName.text = weaponData.WeaponName;

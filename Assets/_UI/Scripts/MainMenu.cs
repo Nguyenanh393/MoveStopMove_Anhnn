@@ -22,16 +22,15 @@ namespace _UI.Scripts
             Close(0);
         }
         
-        // public void SkinShopButton()
-        // {
-        //     UIManager.Ins.OpenUI<SkinShop>();
-        //     Close(0);
-        // }
+        public void SkinShopButton()
+        {
+            UIManager.Ins.OpenUI<SkinShop>();
+            Close(0);
+        }
         
         public void WeaponShopButton()
         {
             UIManager.Ins.OpenUI<WeaponShop>();
-            //UIManager.Ins.GetUI<WeaponShop>().SpawnWeapon();
             Close(0);
         }
     }

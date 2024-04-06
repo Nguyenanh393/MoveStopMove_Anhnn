@@ -17,5 +17,26 @@ namespace _Game.Script.DataSO.ItemData.SkinSetData
         public float AttackRangeBonusPercent => attackRangeBonusPercent;
         public float MoveSpeedBonusPercent => moveSpeedBonusPercent;
         public float GoldBonusPercent => goldBonusPercent;
+
+        public String SkinSetInfo()
+        {
+            String skinSetInfo = "";
+            if (attackRangeBonusPercent > 0)
+            {
+                skinSetInfo += "+ " + attackRangeBonusPercent + "% Range";
+            }
+
+            if (moveSpeedBonusPercent > 0)
+            {
+                skinSetInfo += "+ " + moveSpeedBonusPercent + "% Move Speed";
+            }
+
+            if (goldBonusPercent > 0)
+            {
+                skinSetInfo += "+ " + goldBonusPercent + "% Gold";
+            }
+
+            return skinSetInfo;
+        }
     }
 }

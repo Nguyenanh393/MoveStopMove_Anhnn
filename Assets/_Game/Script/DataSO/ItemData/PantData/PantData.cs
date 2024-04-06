@@ -9,5 +9,10 @@ namespace _Game.Script.DataSO.ItemData.PantData
         [SerializeField] private float moveSpeedBonusPercent;
         
         public float MoveSpeedBonusPercent => moveSpeedBonusPercent;
+
+        public String PantInfo()
+        {
+            return moveSpeedBonusPercent + "% Move Speed";
+        }
     }
 }

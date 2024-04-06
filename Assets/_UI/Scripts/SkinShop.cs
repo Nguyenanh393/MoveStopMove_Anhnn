@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkinShop : MonoBehaviour
+public class SkinShop : UICanvas
 {
     
 }

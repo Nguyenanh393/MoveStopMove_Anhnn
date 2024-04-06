@@ -862,8 +862,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1658431354680333332}
-        m_TargetAssemblyTypeName: MianMenu, Assembly-CSharp
-        m_MethodName: PlayButton
+        m_TargetAssemblyTypeName: _UI.Scripts.MainMenu, Assembly-CSharp
+        m_MethodName: SkinShopButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

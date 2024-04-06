@@ -10,5 +10,10 @@ namespace _Game.Script.DataSO.ItemData.ShieldData
         [SerializeField] private float goldBonusPercent;
         
         public float GoldBonusPercent => goldBonusPercent;
+
+        public String ShieldInfo()
+        {
+            return goldBonusPercent + "% Gold";
+        }
     }
 }
