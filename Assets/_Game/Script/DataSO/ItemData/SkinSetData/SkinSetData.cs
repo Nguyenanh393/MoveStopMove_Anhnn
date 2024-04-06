@@ -12,5 +12,10 @@ namespace _Game.Script.DataSO.ItemData.SkinSetData
         [SerializeField] private float attackRangeBonusPercent;
         [SerializeField] private float moveSpeedBonusPercent;
         [SerializeField] private float goldBonusPercent;
+        
+        public PoolType PoolType => poolType;
+        public float AttackRangeBonusPercent => attackRangeBonusPercent;
+        public float MoveSpeedBonusPercent => moveSpeedBonusPercent;
+        public float GoldBonusPercent => goldBonusPercent;
     }
 }

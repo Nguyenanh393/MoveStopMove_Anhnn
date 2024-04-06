@@ -10,5 +10,9 @@ namespace _Game.Script.DataSO.ItemData
         [SerializeField] private Type type;
         [SerializeField] private Sprite TypeIcon;
         [SerializeField] private int price;
+        
+        public Type GetType => type;
+        public Sprite GetTypeIcon => TypeIcon;
+        public int Price => price;
     }
 }

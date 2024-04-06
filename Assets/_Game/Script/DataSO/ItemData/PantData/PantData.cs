@@ -7,5 +7,7 @@ namespace _Game.Script.DataSO.ItemData.PantData
     public class PantData : ItemData<Material>
     {
         [SerializeField] private float moveSpeedBonusPercent;
+        
+        public float MoveSpeedBonusPercent => moveSpeedBonusPercent;
     }
 }

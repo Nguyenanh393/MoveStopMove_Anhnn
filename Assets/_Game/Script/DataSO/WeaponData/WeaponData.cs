@@ -1,4 +1,5 @@
 using System;
+using _Game.Script.DataSO.ItemData;
 using _Game.Script.GamePlay.Weapon;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,15 +7,32 @@ using UnityEngine.UI;
 namespace _Game.Script.DataSO.WeaponData
 {
     [Serializable]
-    public class WeaponData
+    public class WeaponData : ItemData<Weapon>
     {
-        [SerializeField] private Weapon weapon;
         [SerializeField] private float attackSpeed;
         [SerializeField] private float attackRangeBonus;
         [SerializeField] private PoolType poolType;
         
         [SerializeField] private String weaponName;
-        [SerializeField] private Sprite weaponImage;
-        [SerializeField] private int price;
+        
+        public float AttackSpeed => attackSpeed;
+        public float AttackRangeBonus => attackRangeBonus;
+        public PoolType PoolType => poolType;
+        public string WeaponName => weaponName;
+
+        public string WeaponInfo()
+        {
+            String weaponInfo = "";
+            if (attackSpeed > 0)
+            {
+                weaponInfo += "+ " + attackSpeed + " Speed";
+            }
+            if (attackRangeBonus > 0)
+            {
+                weaponInfo += "+ " + attackRangeBonus + " Range";
+            }
+            
+            return weaponInfo;
+        }
     }
 }
