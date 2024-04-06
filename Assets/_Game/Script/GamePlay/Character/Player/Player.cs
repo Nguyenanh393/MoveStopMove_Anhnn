@@ -2,6 +2,7 @@
 using _Game.Script.GamePlay.Character.StateMachine.Player;
 using _Game.Script.Level;
 using _Game.Script.RawInput;
+using _Game.Script.UserData;
 using _UI.Scripts;
 using _UI.Scripts.UI;
 using UnityEngine;
@@ -36,12 +37,14 @@ namespace _Game.Script.GamePlay.Character.Player
             {
                 GameManager.ChangeState(GameState.Lose);
                 UIManager.Ins.OpenUI<Lose>();
+                DataManager.Ins.SetUserDataCoin(DataManager.Ins.GetUserDataCoin() + Score);
             }
 
             if (CharacterManager.Ins.Characters.Count == 1 && CharacterManager.Ins.Characters[0] == this)
             {
                 UIManager.Ins.OpenUI<Win>();
                 GameManager.ChangeState(GameState.Win);
+                DataManager.Ins.SetUserDataCoin(DataManager.Ins.GetUserDataCoin() + Score);
             }
         }
         public void ChangeState(IState<Player> state)

@@ -29,6 +29,8 @@ namespace _Game.Script.GamePlay.Character.Character
 
         private bool isDead;
         private int score = 0;
+        
+        public int Score => score;
 
         protected void OnInit()
         {

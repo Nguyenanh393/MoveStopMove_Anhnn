@@ -9,9 +9,9 @@ namespace _UI.Scripts.UI.SkinShopButton
     public class TopBarButton
     {
         [SerializeField] private Sprite icon;
-        [SerializeField] private ItemDataSOList.ItemTypeEnum itemType;
+        [SerializeField] private ItemDataSOManager.ItemTypeEnum itemType;
         
         public Sprite Icon => icon;
-        public ItemDataSOList.ItemTypeEnum ItemType => itemType;
+        public ItemDataSOManager.ItemTypeEnum ItemType => itemType;
     }
 }

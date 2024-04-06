@@ -1,5 +1,6 @@
 ﻿using _Game.Script.GamePlay.Map;
 using _Game.Script.Level;
+using _Game.Script.UserData;
 using UnityEngine;
 
 namespace _Game.Script.Manager
@@ -21,17 +22,13 @@ namespace _Game.Script.Manager
         
         public void LoadMap()
         {
-            if (PlayerPrefs.HasKey("Map") == false)
-            {
-                PlayerPrefs.SetInt("Map", 0);
-            }
-            LoadMap(PlayerPrefs.GetInt("Map"));
+            LoadMap(DataManager.Ins.GetUserDataLevel());
         }
         
         public void LoadNextMap()
         {
-            PlayerPrefs.SetInt("Map", PlayerPrefs.GetInt("Map") + 1);
-            LoadMap(PlayerPrefs.GetInt("Map") + 1);
+            DataManager.Ins.SetUserDataLevel(DataManager.Ins.GetUserDataLevel() + 1);
+            LoadMap(DataManager.Ins.GetUserDataLevel());
         }
         
         public void DespawnMap()

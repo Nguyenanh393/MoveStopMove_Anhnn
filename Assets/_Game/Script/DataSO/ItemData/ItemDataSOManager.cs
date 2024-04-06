@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace _Game.Script.DataSO.ItemData
 {
-    public class ItemDataSOList : Singleton<ItemDataSOList>
+    public class ItemDataSOManager : Singleton<ItemDataSOManager>
     {
         [SerializeField] private HatSO hatSO;
         [SerializeField] private PantSO pantSO;
@@ -27,7 +27,8 @@ namespace _Game.Script.DataSO.ItemData
             Hat,
             Pant,
             Shield,
-            SkinSet
+            SkinSet,
+            Weapon
         }
     }
 }

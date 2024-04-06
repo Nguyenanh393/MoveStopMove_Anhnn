@@ -1,3 +1,5 @@
+using System;
+using System.Net.Mime;
 using _Game.Script.DataSO.WeaponData;
 using _Game.Script.GamePlay.Character.Character;
 using _Game.Script.GamePlay.Weapon;
@@ -5,13 +7,28 @@ using _Game.Script.GamePlay.Weapon.Bullet;
 using _Game.Script.Level;
 using _Game.Script.Manager;
 using _Game.Script.RawInput;
+using _Game.Script.UserData;
 using _UI.Scripts.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _UI.Scripts
 {
     public class MainMenu : UICanvas
     {
+        
+        [SerializeField] private Text coinText;
+
+        private void Start()
+        {
+            SetCoinText();
+        }
+
+        private void OnEnable()
+        {
+            SetCoinText();
+        }
+
         public void PlayButton()
         {
             UIManager.Ins.OpenUI<GamePlay>();
@@ -32,6 +49,11 @@ namespace _UI.Scripts
         {
             UIManager.Ins.OpenUI<WeaponShop>();
             Close(0);
+        }
+        
+        private void SetCoinText()
+        {
+            coinText.text = DataManager.Ins.GetUserDataCoin().ToString();
         }
     }
 }

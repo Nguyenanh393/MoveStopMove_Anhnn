@@ -10,10 +10,10 @@ namespace _UI.Scripts.UI.SkinShopButton
     public class TopBarButtonUI : MonoBehaviour
     {
         [SerializeField] private Image iconImage;
-        [SerializeField] private ItemDataSOList.ItemTypeEnum itemType;
+        [SerializeField] private ItemDataSOManager.ItemTypeEnum itemType;
 
-        private ItemDataSOList.ItemTypeEnum currentItemType;
-        public void SetData(Sprite icon, ItemDataSOList.ItemTypeEnum itemType)
+        private ItemDataSOManager.ItemTypeEnum currentItemType;
+        public void SetData(Sprite icon, ItemDataSOManager.ItemTypeEnum itemType)
         {
             iconImage.sprite = icon;
             this.itemType = itemType;

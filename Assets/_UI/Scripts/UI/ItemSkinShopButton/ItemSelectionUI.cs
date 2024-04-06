@@ -16,23 +16,23 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         private List<ItemButtonUI> itemButtonShieldList = new List<ItemButtonUI>();
         private List<ItemButtonUI> itemButtonSkinSetList = new List<ItemButtonUI>();
         private List<ItemButtonUI> itemButtonList = new List<ItemButtonUI>();
-        private void OnEnable()
+        private void Start()
         {
             SpawnAllItemButton();
             SpawnItemButtons(itemButtonHatList);
         }
         
-        public List<ItemButtonUI> GetItemButtonList(ItemDataSOList.ItemTypeEnum itemType)
+        public List<ItemButtonUI> GetItemButtonList(ItemDataSOManager.ItemTypeEnum itemType)
         {
             switch (itemType)
             {
-                case ItemDataSOList.ItemTypeEnum.Hat:
+                case ItemDataSOManager.ItemTypeEnum.Hat:
                     return itemButtonHatList;
-                case ItemDataSOList.ItemTypeEnum.Pant:
+                case ItemDataSOManager.ItemTypeEnum.Pant:
                     return itemButtonPantList;
-                case ItemDataSOList.ItemTypeEnum.Shield:
+                case ItemDataSOManager.ItemTypeEnum.Shield:
                     return itemButtonShieldList;
-                case ItemDataSOList.ItemTypeEnum.SkinSet:
+                case ItemDataSOManager.ItemTypeEnum.SkinSet:
                     return itemButtonSkinSetList;
                 default:
                     return null;
@@ -49,27 +49,27 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
 
         private void SpawnAllItemButton()
         {
-            for (int i = 0; i < ItemDataSOList.Ins.HatSO.DataList.Count; i++)
+            for (int i = 0; i < ItemDataSOManager.Ins.HatSO.DataList.Count; i++)
             {
-                SpawnItemButton(ItemDataSOList.Ins.HatSO.DataList[i].GetTypeIcon, ItemDataSOList.ItemTypeEnum.Hat);
+                SpawnItemButton(ItemDataSOManager.Ins.HatSO.DataList[i].GetTypeIcon, ItemDataSOManager.ItemTypeEnum.Hat);
             }
             
-            for (int i = 0; i < ItemDataSOList.Ins.PantSO.DataList.Count; i++)
+            for (int i = 0; i < ItemDataSOManager.Ins.PantSO.DataList.Count; i++)
             {
-                SpawnItemButton(ItemDataSOList.Ins.PantSO.DataList[i].GetTypeIcon, ItemDataSOList.ItemTypeEnum.Pant);
+                SpawnItemButton(ItemDataSOManager.Ins.PantSO.DataList[i].GetTypeIcon, ItemDataSOManager.ItemTypeEnum.Pant);
             }
             
-            for (int i = 0; i < ItemDataSOList.Ins.ShieldSO.DataList.Count; i++)
+            for (int i = 0; i < ItemDataSOManager.Ins.ShieldSO.DataList.Count; i++)
             {
-                SpawnItemButton(ItemDataSOList.Ins.ShieldSO.DataList[i].GetTypeIcon, ItemDataSOList.ItemTypeEnum.Shield);
+                SpawnItemButton(ItemDataSOManager.Ins.ShieldSO.DataList[i].GetTypeIcon, ItemDataSOManager.ItemTypeEnum.Shield);
             }
             
-            for (int i = 0; i < ItemDataSOList.Ins.SkinSetSO.DataList.Count; i++)
+            for (int i = 0; i < ItemDataSOManager.Ins.SkinSetSO.DataList.Count; i++)
             {
-                SpawnItemButton(ItemDataSOList.Ins.SkinSetSO.DataList[i].GetTypeIcon, ItemDataSOList.ItemTypeEnum.SkinSet);
+                SpawnItemButton(ItemDataSOManager.Ins.SkinSetSO.DataList[i].GetTypeIcon, ItemDataSOManager.ItemTypeEnum.SkinSet);
             }
         }
-        private void SpawnItemButton(Sprite getIcon, ItemDataSOList.ItemTypeEnum itemType)
+        private void SpawnItemButton(Sprite getIcon, ItemDataSOManager.ItemTypeEnum itemType)
         {
             ItemButtonUI itemButton = Instantiate(itemButtonPrefab, itemParent);
             itemButton.SetIcon(getIcon);
@@ -77,16 +77,16 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             itemButtonList.Add(itemButton);
             switch (itemType)
             {
-                case ItemDataSOList.ItemTypeEnum.Hat:
+                case ItemDataSOManager.ItemTypeEnum.Hat:
                     itemButtonHatList.Add(itemButton);
                     break;
-                case ItemDataSOList.ItemTypeEnum.Pant:
+                case ItemDataSOManager.ItemTypeEnum.Pant:
                     itemButtonPantList.Add(itemButton);
                     break;
-                case ItemDataSOList.ItemTypeEnum.Shield:
+                case ItemDataSOManager.ItemTypeEnum.Shield:
                     itemButtonShieldList.Add(itemButton);
                     break;
-                case ItemDataSOList.ItemTypeEnum.SkinSet:
+                case ItemDataSOManager.ItemTypeEnum.SkinSet:
                     itemButtonSkinSetList.Add(itemButton);
                     break;
             }
