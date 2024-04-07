@@ -14,6 +14,7 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
 {
     public class ItemSelectionUI : Singleton<ItemSelectionUI>
     {
+        // có thể không cần sử dụng Singleton cho class này
         [SerializeField] private ItemButtonUI itemButtonPrefab;
         [SerializeField] private Image itemSelectionImage;
         [SerializeField] private Transform itemParent;
@@ -35,14 +36,19 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         private List<PantData> pantDataList;
         private List<ShieldData> shieldDataList;
         private List<SkinSetData> skinSetDataList;
-        private void Start()
+        
+        private ItemButtonUI currentButton;
+        private void OnEnable()
         {
             hatDataList = ItemDataSOManager.Ins.HatSO.DataList;
             pantDataList = ItemDataSOManager.Ins.PantSO.DataList;
             shieldDataList = ItemDataSOManager.Ins.ShieldSO.DataList;
             skinSetDataList = ItemDataSOManager.Ins.SkinSetSO.DataList;
+            
             SpawnAllItemButton();
             SpawnItemButtons(itemButtonHatList);
+            currentButton = itemButtonList[0];
+            SetButtonSelection(currentButton);
         }
         
         public List<ItemButtonUI> GetItemButtonList(ItemDataSOManager.ItemTypeEnum itemType)
@@ -101,35 +107,22 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             ItemButtonUI itemButton = Instantiate(itemButtonPrefab, itemParent);
             Image itemButtonImage = Instantiate(itemSelectionImage, itemButton.transform);
             
-            itemButton.SetIcon(getIcon);
-            itemButton.ItemType = itemType;
-            itemButton.ItemInfo = getInfo;
-            itemButton.ItemPrice = getPrice;
+            itemButton.SetData(getIcon, itemType, getInfo, getPrice);
             
             itemButton.gameObject.SetActive(false);
             itemButtonImage.gameObject.SetActive(false);
             
             itemSelectionImages.Add(itemButtonImage);
             itemButtonList.Add(itemButton);
-            switch (itemType)
-            {
-                case ItemDataSOManager.ItemTypeEnum.Hat:
-                    itemButtonHatList.Add(itemButton);
-                    break;
-                case ItemDataSOManager.ItemTypeEnum.Pant:
-                    itemButtonPantList.Add(itemButton);
-                    break;
-                case ItemDataSOManager.ItemTypeEnum.Shield:
-                    itemButtonShieldList.Add(itemButton);
-                    break;
-                case ItemDataSOManager.ItemTypeEnum.SkinSet:
-                    itemButtonSkinSetList.Add(itemButton);
-                    break;
-            }
             
-            itemButton.onClickAction += () =>
+            GetItemButtonList(itemType).Add(itemButton);
+            
+            itemButton.OnClickAction += () =>
             {
-                SetItemInfo(itemButton);
+                // có thể cho 1 biến currentButton để lưu lại button hiện tại
+                // và so sánh với button được click để không phải duyệt qua 
+                // tất cả selectionImages => tăng hiệu suất
+                // (Đoán thế)
                 SetButtonSelection(itemButton);
             };
         }
@@ -139,44 +132,42 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             imageInfoText.text = itemButton.ItemInfo;
         }
 
-        private void SetButtonSelection(ItemButtonUI itemButton)
+        public void SetButtonSelection(ItemButtonUI itemButton)
         {
-            for (int i = 0; i < itemSelectionImages.Count; i++)
-            {
-                if (itemButton == itemButtonList[i])
-                {
-                    itemSelectionImages[i].gameObject.SetActive(true);
-                }
-                else
-                {
-                    itemSelectionImages[i].gameObject.SetActive(false);
-                }
-            }
+            itemSelectionImages[itemButtonList.IndexOf(currentButton)].gameObject.SetActive(false);
+            itemSelectionImages[itemButtonList.IndexOf(itemButton)].gameObject.SetActive(true);
+            currentButton = itemButton;
+            SetItemInfo(itemButton);
             SetBottomBarButton(itemButton);
         }
 
         private void SetBottomBarButton(ItemButtonUI itemButton)
         {
-            if (DataManager.Ins.GetItemState(itemButton.ItemType, GetItemButtonList(itemButton.ItemType).IndexOf(itemButton)) == 0)
+            int itemState = DataManager.Ins.GetItemState(itemButton.ItemType, GetItemButtonList(itemButton.ItemType).IndexOf(itemButton));
+            switch (itemState)
             {
-                buyButton.gameObject.SetActive(true);
-                equipButton.gameObject.SetActive(false);
-                buyButtonText.text = "BUY " + itemButton.ItemPrice;
-            }
-            else if (DataManager.Ins.GetItemState(itemButton.ItemType, GetItemButtonList(itemButton.ItemType).IndexOf(itemButton)) == 1)
-            {
-                buyButton.gameObject.SetActive(false);
-                equipButton.gameObject.SetActive(true);
-            }
-            else if (DataManager.Ins.GetItemState(itemButton.ItemType, GetItemButtonList(itemButton.ItemType).IndexOf(itemButton)) == 2)
-            {
-                buyButton.gameObject.SetActive(false);
-                equipButton.gameObject.SetActive(false);
+                case 0:
+                    buyButton.gameObject.SetActive(true);
+                    equipButton.gameObject.SetActive(false);
+                    buyButtonText.text = "Buy";
+                    break;
+                case 1:
+                    buyButton.gameObject.SetActive(false);
+                    equipButton.gameObject.SetActive(true);
+                    buyButtonText.text = "Equip";
+                    break;
+                case 2:
+                    buyButton.gameObject.SetActive(false);
+                    equipButton.gameObject.SetActive(false);
+                    break;
             }
         }
 
         public void DespawnButton()
         {
+            // có thể chỉ deactivate list của itemType hiện tại
+            // bị lỗi vì ko xóa hết button khi chuyển từ Hat sang Pant
+            //itemSelectionImages[itemButtonList.IndexOf(currentButton)].gameObject.SetActive(false);
             for (int i = 0; i < itemButtonList.Count; i++)
             {
                 itemButtonList[i].gameObject.SetActive(false);

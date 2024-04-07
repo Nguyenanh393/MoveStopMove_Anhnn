@@ -476,7 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userData:
     level: 0
-    coin: 0
+    coin: 1000
 --- !u!4 &712796799
 Transform:
   m_ObjectHideFlags: 0

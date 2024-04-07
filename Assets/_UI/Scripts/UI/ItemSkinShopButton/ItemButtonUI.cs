@@ -16,30 +16,26 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         private String itemInfo;
         private int itemPrice;
         
-        public UnityAction onClickAction;
-
-        public void SetIcon(Sprite icon)
+        private UnityAction onClickAction;
+        
+        public UnityAction OnClickAction
+        {
+            get => onClickAction;
+            set => onClickAction = value;
+        }
+        
+        public void SetData(Sprite icon, ItemDataSOManager.ItemTypeEnum nItemType, String nItemInfo, int nItemPrice)
         {
             iconImage.sprite = icon;
+            itemType = nItemType;
+            itemInfo = nItemInfo;
+            itemPrice = nItemPrice;
         }
-
-        public ItemDataSOManager.ItemTypeEnum ItemType
-        {
-            get => itemType;
-            set => itemType = value;
-        }
+        public ItemDataSOManager.ItemTypeEnum ItemType => itemType;
         
-        public String ItemInfo
-        {
-            get => itemInfo;
-            set => itemInfo = value;
-        }
+        public String ItemInfo => itemInfo;
         
-        public int ItemPrice
-        {
-            get => itemPrice;
-            set => itemPrice = value;
-        }
+        public int ItemPrice => itemPrice;
         
         public void OnClick()
         {
