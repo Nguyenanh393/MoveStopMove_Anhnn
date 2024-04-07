@@ -48,7 +48,7 @@ namespace _Game.Script.UserData
 
         private void SaveUserData()
         {
-            string json = JsonUtility.ToJson(userData);
+            string json = JsonConvert.SerializeObject(userData);
             PlayerPrefs.SetString("UserData", json);
         }
 
