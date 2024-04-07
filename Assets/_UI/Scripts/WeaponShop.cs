@@ -21,7 +21,7 @@ namespace _UI.Scripts
         [SerializeField] private Button buyButton;
         
         private int currentWeaponIndex = 0;
-        private int currentEquipWeaponIndex = 0;
+        //private int currentEquipWeaponIndex = 0;
         private WeaponSO weaponSO;
 
         private void OnEnable()
@@ -54,7 +54,7 @@ namespace _UI.Scripts
             {
                 if (weaponState == 2)
                 {
-                    currentEquipWeaponIndex = currentWeaponIndex;
+                    // currentEquipWeaponIndex = currentWeaponIndex;
                     SetVisible(equipButton, true);
                     SetVisible(buyButton, false);
                     equipButtonText.text = "EQUIPPED";

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using _Game.Script.DataSO.ItemData;
+using _Game.Script.OtherOpti;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace _Game.Script.UserData
     {
         [SerializeField] private UserData userData;
         
-        public UserData UserData => userData;
+        //public UserData UserData => userData;
 
         private void Awake()
         {
@@ -49,12 +50,12 @@ namespace _Game.Script.UserData
         private void SaveUserData()
         {
             string json = JsonConvert.SerializeObject(userData);
-            PlayerPrefs.SetString("UserData", json);
+            PlayerPrefs.SetString(Constances.Data.UserData, json);
         }
 
         private void LoadUserData()
         {
-            string json = PlayerPrefs.GetString("UserData");
+            string json = PlayerPrefs.GetString(Constances.Data.UserData);
             userData = JsonConvert.DeserializeObject<UserData>(json);
         }
         
@@ -62,6 +63,5 @@ namespace _Game.Script.UserData
         {
             return userData.GetItemState(itemType, itemIds);
         }
-        
     }
 }

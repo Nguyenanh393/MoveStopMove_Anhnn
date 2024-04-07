@@ -18,5 +18,10 @@ namespace _Game.Script.OtherOpti
             public const int characterOnScreen = 11;
             public const float DefaultWaitSpawnTime = 6f;
         }
+
+        public class Data
+        {
+            public const string UserData = "UserData";
+        }
     }
 }
