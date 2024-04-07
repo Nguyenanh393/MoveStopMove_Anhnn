@@ -11,7 +11,7 @@ namespace _Game.Script.UserData
         
         public UserData UserData => userData;
 
-        private void Start()
+        private void Awake()
         {
             LoadUserData();
         }
@@ -19,7 +19,6 @@ namespace _Game.Script.UserData
         private void OnApplicationQuit()
         {
             SaveUserData();
-            ExportToJson();
         }
         
         public void SetUserDataLevel(int level)
@@ -55,7 +54,7 @@ namespace _Game.Script.UserData
 
         private void LoadUserData()
         {
-            string json = File.ReadAllText("Assets/_Game/Script/UserData/userData.json");
+            string json = PlayerPrefs.GetString("UserData");
             userData = JsonConvert.DeserializeObject<UserData>(json);
         }
         
@@ -63,11 +62,6 @@ namespace _Game.Script.UserData
         {
             return userData.GetItemState(itemType, itemIds);
         }
-
-        private void ExportToJson()
-        {
-            string json = JsonConvert.SerializeObject(userData);
-            File.WriteAllText("Assets/_Game/Script/UserData/userData.json", json);
-        }
+        
     }
 }

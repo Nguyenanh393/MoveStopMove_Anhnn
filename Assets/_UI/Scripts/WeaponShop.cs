@@ -1,8 +1,6 @@
-using System;
 using _Game.Script.DataSO.ItemData;
 using _Game.Script.DataSO.WeaponData;
 using _Game.Script.UserData;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,10 +17,11 @@ namespace _UI.Scripts
         [SerializeField] private Text buyButtonText;
         [SerializeField] private Text equipButtonText;
         
-        [SerializeField] private Button EquipButton;
-        [SerializeField] private Button BuyButton;
+        [SerializeField] private Button equipButton;
+        [SerializeField] private Button buyButton;
         
         private int currentWeaponIndex = 0;
+        private int currentEquipWeaponIndex = 0;
         private WeaponSO weaponSO;
 
         private void OnEnable()
@@ -35,59 +34,41 @@ namespace _UI.Scripts
             UIManager.Ins.OpenUI<MainMenu>();
             Close(0);
         }
-        
-        public void SpawnWeapon()
+
+        private void SpawnWeapon()
         {
-            // sau sẽ lấy dữ liệu của playerprefs để hiển thị ra màn hình
             weaponSO = ItemDataSOManager.Ins.WeaponSO;
             WeaponData weaponData = weaponSO.DataList[currentWeaponIndex];
+            
             weaponIcon.sprite = weaponData.GetTypeIcon;
             weaponName.text = weaponData.WeaponName;
             weaponInfomation.text = weaponData.WeaponInfo();
-            int weaponState = DataManager.Ins.GetItemState(ItemDataSOManager.ItemTypeEnum.Weapon, currentWeaponIndex);
-            if (weaponState != 0)
-            {
-                if (weaponState == 2)
-                {
-                    SetVisible(EquipButton, true);
-                    SetVisible(BuyButton, false);
-                    equipButtonText.text = "EQUIPPED";
-                }
-                if (weaponState == 1)
-                {
-                    SetVisible(EquipButton, true);
-                    SetVisible(BuyButton, false);
-                    equipButtonText.text = "EQUIP";
-                }
-            } else
-            {
-                SetVisible(EquipButton, false);
-                SetVisible(BuyButton, true);
-                buyButtonText.text = "BUY " + weaponData.Price;
-            }
+            
+            UpdateButtonState();
         }
         private void UpdateButtonState()
         {
             WeaponData weaponData = weaponSO.DataList[currentWeaponIndex];
-            int weaponState = DataManager.Ins.GetItemState(ItemDataSOManager.ItemTypeEnum.Weapon, currentWeaponIndex);
+            int weaponState = GetUserDataWeaponState(currentWeaponIndex);
             if (weaponState != 0)
             {
                 if (weaponState == 2)
                 {
-                    SetVisible(EquipButton, true);
-                    SetVisible(BuyButton, false);
+                    currentEquipWeaponIndex = currentWeaponIndex;
+                    SetVisible(equipButton, true);
+                    SetVisible(buyButton, false);
                     equipButtonText.text = "EQUIPPED";
                 }
                 if (weaponState == 1)
                 {
-                    SetVisible(EquipButton, true);
-                    SetVisible(BuyButton, false);
+                    SetVisible(equipButton, true);
+                    SetVisible(buyButton, false);
                     equipButtonText.text = "EQUIP";
                 }
             } else
             {
-                SetVisible(EquipButton, false);
-                SetVisible(BuyButton, true);
+                SetVisible(equipButton, false);
+                SetVisible(buyButton, true);
                 buyButtonText.text = "BUY " + weaponData.Price;
             }
         }
@@ -99,7 +80,7 @@ namespace _UI.Scripts
             {
                 currentWeaponIndex = 0;
             }
-            UpdateButtonState();
+            SpawnWeapon();
         }
         
         public void PreviousButton()
@@ -109,7 +90,7 @@ namespace _UI.Scripts
             {
                 currentWeaponIndex = weaponSO.DataList.Count - 1;
             }
-            UpdateButtonState();
+            SpawnWeapon();
         }
 
         private void SetVisible(Button button, bool visible)
@@ -125,18 +106,36 @@ namespace _UI.Scripts
             if (coin >= price)
             {
                 DataManager.Ins.SetUserDataCoin(coin - price);
-                DataManager.Ins.SetUserDataItemState(ItemDataSOManager.ItemTypeEnum.Weapon, currentWeaponIndex, 1);
+                SetUserDataWeaponState(currentWeaponIndex, 1);
                 UpdateButtonState();
             }
         }
         
         public void OnClickEquipButton()
         {
-            DataManager.Ins.SetUserDataItemState(ItemDataSOManager.ItemTypeEnum.Weapon, currentWeaponIndex, 2);
+            SetUserDataWeaponState(currentWeaponIndex, 2);
             for (int i = 0; i < weaponSO.DataList.Count; i++)
             {
+                if (i != currentWeaponIndex)
+                {
+                    if (GetUserDataWeaponState(i) == 2)
+                    {
+                        SetUserDataWeaponState(i, 1);
+                    }
+                }
             }
-            UpdateButtonState();
+            UIManager.Ins.OpenUI<MainMenu>();
+            Close(0);
+        }
+        
+        private void SetUserDataWeaponState(int valueIndex, int value)
+        {
+            DataManager.Ins.SetUserDataItemState(ItemDataSOManager.ItemTypeEnum.Weapon, valueIndex, value);
+        }
+        
+        private int GetUserDataWeaponState(int valueIndex)
+        {
+            return DataManager.Ins.GetItemState(ItemDataSOManager.ItemTypeEnum.Weapon, valueIndex);
         }
     }
 }

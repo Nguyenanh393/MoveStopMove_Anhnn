@@ -14,5 +14,9 @@ public class Win : UICanvas
         Close(0);
     }
     
+    public void SetScore(int score)
+    {
+        this.score.text = score.ToString();
+    }
     
 }

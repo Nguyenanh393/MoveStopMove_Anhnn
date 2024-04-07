@@ -336,9 +336,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Setting, Assembly-CSharp
-        m_MethodName: ContinueButton
+      - m_Target: {fileID: 2851348370200982834}
+        m_TargetAssemblyTypeName: _UI.Scripts.WeaponShop, Assembly-CSharp
+        m_MethodName: OnClickEquipButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1425,8 +1425,8 @@ MonoBehaviour:
   weaponInfomation: {fileID: 6497759233298398023}
   buyButtonText: {fileID: 1620655920408458330}
   equipButtonText: {fileID: 7338404552938099107}
-  EquipButton: {fileID: 2885575568205016449}
-  BuyButton: {fileID: 8802410308042563812}
+  equipButton: {fileID: 2885575568205016449}
+  buyButton: {fileID: 8802410308042563812}
 --- !u!1 &7338404552880894571
 GameObject:
   m_ObjectHideFlags: 0

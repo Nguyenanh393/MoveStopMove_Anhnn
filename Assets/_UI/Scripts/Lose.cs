@@ -22,5 +22,10 @@ namespace _UI.Scripts
             CameraManager.Ins.SetPosition(new Vector3(0, 10, -20));
             Close(0);
         }
+        
+        public void SetScore(int score)
+        {
+            this.score.text = score.ToString();
+        }
     }
 }

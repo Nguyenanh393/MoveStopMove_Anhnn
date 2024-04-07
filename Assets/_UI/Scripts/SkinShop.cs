@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using _UI.Scripts;
-using UnityEngine;
-
-public class SkinShop : UICanvas
+namespace _UI.Scripts
 {
-    public void ExitButton()
+    public class SkinShop : UICanvas
     {
-        UIManager.Ins.OpenUI<MainMenu>();
-        Close(0);
-    }
+        public void ExitButton()
+        {
+            UIManager.Ins.OpenUI<MainMenu>();
+            Close(0);
+        }
     
+        
+    }
 }

@@ -11,8 +11,8 @@ namespace _UI.Scripts.UI.SkinShopButton
     {
         [SerializeField] private Image iconImage;
         [SerializeField] private ItemDataSOManager.ItemTypeEnum itemType;
-
-        private ItemDataSOManager.ItemTypeEnum currentItemType;
+        [SerializeField] private Image buttonImage;
+        
         public void SetData(Sprite icon, ItemDataSOManager.ItemTypeEnum itemType)
         {
             iconImage.sprite = icon;
@@ -21,8 +21,8 @@ namespace _UI.Scripts.UI.SkinShopButton
         
         public void OnClick()
         {
+            buttonImage.color = new Color(1, 1, 1, 0);
             ItemSelectionUI.Ins.DespawnButton();
-            currentItemType = itemType;
             ItemSelectionUI.Ins.SpawnItemButtons(ItemSelectionUI.Ins.GetItemButtonList(itemType));
         }
     }
