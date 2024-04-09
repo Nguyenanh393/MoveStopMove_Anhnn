@@ -63,5 +63,10 @@ namespace _Game.Script.UserData
         {
             return userData.GetItemState(itemType, itemIds);
         }
+        
+        public int GetItemEquipped(ItemDataSOManager.ItemTypeEnum itemType, int itemIds)
+        {
+            return userData.GetItemEquipped(itemType);
+        }
     }
 }

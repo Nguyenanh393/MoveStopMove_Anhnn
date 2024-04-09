@@ -44,5 +44,18 @@ namespace _Game.Script.UserData
             int id = Convert.ToInt32(itemIds);
             return _itemStates[itemType][id];
         }
+
+        public int GetItemEquipped(ItemDataSOManager.ItemTypeEnum itemType)
+        {
+            for (int i = 0; i < _itemStates[itemType].Count; i++)
+            {
+                if (_itemStates[itemType][i] == 2)
+                {
+                    return i;
+                }
+            }
+
+            return 0;
+        }
     }
 }

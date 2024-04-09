@@ -25,8 +25,8 @@ namespace _Game.Script.GamePlay.Character.Character
         private Hat currentHat;
         private Material currentPant;
         private Shield currentShield;
-        
-        private void OnInit()
+
+        protected void OnInit()
         {
             DespawnAllItem();
         }
@@ -35,20 +35,20 @@ namespace _Game.Script.GamePlay.Character.Character
             Destroy(currentWeapon.gameObject);
             currentWeapon = Instantiate(weaponData.DataList[weaponIndex].GetType, WeaponParent);
         }
-        
-        private void ChangeHat(int hatIndex)
+
+        protected void ChangeHat(int hatIndex)
         {
             Destroy(currentHat.gameObject);
             currentHat = Instantiate(hatData.DataList[hatIndex].GetType, hatParent);
         }
 
-        private void ChangePant(int pantIndex)
+        protected void ChangePant(int pantIndex)
         {
             currentPant = pantData.DataList[pantIndex].GetType;
             pantParent.gameObject.GetComponent<Renderer>().material = currentPant;
         }
 
-        private void ChangeShield(int shieldIndex)
+        protected void ChangeShield(int shieldIndex)
         {
             Destroy(currentShield.gameObject);
             currentShield = Instantiate(shieldData.DataList[shieldIndex].GetType, shieldParent);
