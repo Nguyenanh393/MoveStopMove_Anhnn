@@ -14,5 +14,6 @@ namespace _Game.Script.DataSO.ItemData
         public Type GetType => type;
         public Sprite GetTypeIcon => TypeIcon;
         public int Price => price;
+        
     }
 }

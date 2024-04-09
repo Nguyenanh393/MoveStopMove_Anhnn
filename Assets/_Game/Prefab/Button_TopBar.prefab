@@ -151,6 +151,7 @@ MonoBehaviour:
   iconImage: {fileID: 6601945792130956867}
   itemType: 0
   buttonImage: {fileID: 4491580810110588554}
+  itemSelectionUI: {fileID: 1146263951018404985, guid: 4de6e5a1b17313441b8135a24825698d, type: 3}
 --- !u!1 &4491580810896539300
 GameObject:
   m_ObjectHideFlags: 0

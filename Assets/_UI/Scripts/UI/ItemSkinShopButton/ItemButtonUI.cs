@@ -4,6 +4,7 @@ using _Game.Script.DataSO.ItemData;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace _UI.Scripts.UI.ItemSkinShopButton
@@ -41,5 +42,6 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         {
             onClickAction?.Invoke();
         }
+
     }
 }
