@@ -1,4 +1,5 @@
 using _Game.Script.DataSO.ItemData;
+using _Game.Script.Manager;
 using _Game.Script.UserData;
 using _UI.Scripts.UI.ItemSkinShopButton;
 using UnityEngine;
@@ -18,6 +19,8 @@ namespace _UI.Scripts
         {
             UIManager.Ins.OpenUI<MainMenu>();
             Close(0);
+            Destroy(ItemSelectionUIManager.Ins.PlayerOnScene.gameObject);
+            CharacterManager.Ins.SpawnDancingPlayer(-1);
         }
         
         public void OnClickBuyButton()

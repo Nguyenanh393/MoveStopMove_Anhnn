@@ -61,13 +61,14 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
 
         private void Start()
         {
-            playerOnScene = CharacterManager.Ins.DancingPlayer;
+            
         }
 
         private void OnEnable()
         {
             SpawnItemButtons(itemButtonHatList);
             SetButtonSelection(currentButton);
+            playerOnScene = CharacterManager.Ins.DancingPlayer;
         }
         
         private void OnDisable()
@@ -75,7 +76,6 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             DespawnButton();
             currentButton = null;
             SetButtonSelection(currentButton);
-            playerOnScene.OnInitItem();
         }
         public List<ItemButtonUI> GetItemButtonList(ItemDataSOManager.ItemTypeEnum itemType)
         {

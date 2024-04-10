@@ -8,6 +8,7 @@ using _Game.Script.GamePlay.Map;
 using _Game.Script.OtherOpti;
 using _Game.Script.UserData;
 using _UI.Scripts.UI;
+using _UI.Scripts.UI.ItemSkinShopButton;
 using UnityEngine;
 
 namespace _Game.Script.Manager
@@ -87,6 +88,7 @@ namespace _Game.Script.Manager
             dancingPlayer.TF.localScale = new Vector3(3f, 3f, 3f);
             dancingPlayer.SetAnim(AnimController.AnimType.Dance);
             dancingPlayer.OnInitItem();
+            //ItemSelectionUIManager.Ins.PlayerOnScene = dancingPlayer;
         }
         private void SpawnBotsAtFirstLoad()
         {
