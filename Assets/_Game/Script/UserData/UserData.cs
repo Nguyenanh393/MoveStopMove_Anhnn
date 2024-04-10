@@ -18,7 +18,7 @@ namespace _Game.Script.UserData
             {ItemDataSOManager.ItemTypeEnum.Weapon, new List<int>(){2,0,0}},
             {ItemDataSOManager.ItemTypeEnum.Hat, new List<int>(){0,0,0,0,0,0,0,0}},
             {ItemDataSOManager.ItemTypeEnum.Pant, new List<int>(){0,0,0,0,0,0,0,0,0}},
-            {ItemDataSOManager.ItemTypeEnum.Shield, new List<int>(){0}},
+            {ItemDataSOManager.ItemTypeEnum.Shield, new List<int>(){0,0}},
             {ItemDataSOManager.ItemTypeEnum.SkinSet, new List<int>(){0,0}},
         };
 
