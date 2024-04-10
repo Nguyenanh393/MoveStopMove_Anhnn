@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _Game.Script.DataSO.WeaponData;
 using _Game.Script.GamePlay.Character.Character;
 using UnityEngine;
 
@@ -7,10 +8,14 @@ namespace _Game.Script.GamePlay.Character.Bot
     public class BotAttack : CharacterAttack
     {
         private bool attacked = false;
-
+        [SerializeField] private WeaponSO weaponSO;
         public void OnInit()
         {
             attacked = false;
+            WeaponIndex = Random.Range(0, weaponSO.DataList.Count);
+            WeaponData weaponData = weaponSO.DataList[WeaponIndex];
+            Weapon = weaponData.GetType;
+            PoolType = weaponData.PoolType;
             base.OnInit();
         }
         public bool Attacked

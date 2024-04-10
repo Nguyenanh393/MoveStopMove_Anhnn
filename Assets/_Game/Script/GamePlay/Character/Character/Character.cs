@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Game.Script.DataSO.SizeData;
 using _Game.Script.Level;
+using _Game.Script.Manager;
 using _Game.Script.OtherOpti;
 using _Pool.Pool;
 using _UI.Scripts.UI;
@@ -15,14 +16,9 @@ namespace _Game.Script.GamePlay.Character.Character
     {
         [SerializeField] private Animator anim;
         [SerializeField] private Transform animTransform;
-        
         [SerializeField] private CharacterAnim characterAnim;
-        
         [SerializeField] private TargetIndicator targetIndicator;
-        [SerializeField] private CharacterItem  characterItem;
-        
         [SerializeField] private SizeSO sizeSO;
-        
         [SerializeField] private AnimController animController;
         
         private AnimController.AnimType currentAnimType;

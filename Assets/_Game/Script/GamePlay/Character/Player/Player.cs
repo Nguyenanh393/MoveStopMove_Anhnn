@@ -1,7 +1,10 @@
-﻿using _Game.Script.GamePlay.Character.Character;
+﻿using _Game.Script.DataSO.ItemData;
+using _Game.Script.GamePlay.Character.Character;
 using _Game.Script.GamePlay.Character.StateMachine.Player;
 using _Game.Script.Level;
-using _Game.Script.RawInput;
+using _Game.Script.Manager;
+using _Game.Script.Manager.RawInput;
+using _Game.Script.OtherOpti;
 using _Game.Script.UserData;
 using _UI.Scripts;
 using _UI.Scripts.UI;
@@ -13,6 +16,7 @@ namespace _Game.Script.GamePlay.Character.Player
     {
         [SerializeField] private PlayerMove playerMove;
         [SerializeField] private PlayerAttack playerAttack;
+        [SerializeField] private PlayerItem playerItem;
         
         private VariableJoystick variableJoystick;
         public bool Attacked
@@ -21,6 +25,7 @@ namespace _Game.Script.GamePlay.Character.Player
             set => playerAttack.Attacked = value;
         }
         public bool CanAttack => playerAttack.CanAttack;
+
         private IState<Player> currentState;
 
         void Update()
@@ -78,5 +83,16 @@ namespace _Game.Script.GamePlay.Character.Player
         public void StopMove() => playerMove.StopMove();
         
         public void Attack() => playerAttack.Attack(); 
+        
+        public void TryItemInSkinShop(ItemDataSOManager.ItemTypeEnum itemType, int itemId)
+        {
+            playerItem.TryItemInSkinShop(itemType, itemId);
+        }
+        
+        public void OnInitItem()
+        {
+            playerItem.OnInitItem();
+        }
+        
     }
 }

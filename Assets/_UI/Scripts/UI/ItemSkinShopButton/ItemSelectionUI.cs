@@ -5,6 +5,7 @@ using _Game.Script.DataSO.ItemData.HatData;
 using _Game.Script.DataSO.ItemData.PantData;
 using _Game.Script.DataSO.ItemData.ShieldData;
 using _Game.Script.DataSO.ItemData.SkinSetData;
+using _Game.Script.GamePlay.Character.Player;
 using _Game.Script.UserData;
 using _UI.Scripts.UI.SkinShopButton;
 using UnityEngine;
@@ -29,7 +30,6 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         private List<ItemButtonUI> itemButtonShieldList = new List<ItemButtonUI>();
         private List<ItemButtonUI> itemButtonSkinSetList = new List<ItemButtonUI>();
         private List<ItemButtonUI> itemButtonList = new List<ItemButtonUI>();
-        //private List<Image> itemSelectionImages = new List<Image>();
         
         private List<HatData> hatDataList;
         private List<PantData> pantDataList;
@@ -37,6 +37,7 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         private List<SkinSetData> skinSetDataList;
         
         private ItemButtonUI currentButton;
+        private Player playerOnScene;
 
         public ItemButtonUI CurrentButton
         {
@@ -50,13 +51,16 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             shieldDataList = ItemDataSOManager.Ins.ShieldSO.DataList;
             skinSetDataList = ItemDataSOManager.Ins.SkinSetSO.DataList;
             SpawnAllItemButton();
-            
+        }
+
+        private void Start()
+        {
+            playerOnScene = FindObjectOfType<Player>();
         }
 
         private void OnEnable()
         {
             SpawnItemButtons(itemButtonHatList);
-            // currentButton = itemButtonList[0];
             SetButtonSelection(currentButton);
         }
         
@@ -65,8 +69,8 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             DespawnButton();
             currentButton = null;
             SetButtonSelection(currentButton);
+            playerOnScene.OnInitItem();
         }
-
         public List<ItemButtonUI> GetItemButtonList(ItemDataSOManager.ItemTypeEnum itemType)
         {
             switch (itemType)
@@ -94,42 +98,36 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
 
         private void SpawnAllItemButton()
         {
-            // trùng lặp quá nhiều, vải tìm cách generic thôi :))
             for (int i = 0; i < hatDataList.Count; i++)
             {
                 HatData hatData = hatDataList[i];
-                SpawnItemButton(hatData.GetTypeIcon, hatData.HatInfo(), hatData.Price, ItemDataSOManager.ItemTypeEnum.Hat); }
+                SpawnItemButton(hatData.GetTypeIcon, hatData.HatInfo(), hatData.Price, ItemDataSOManager.ItemTypeEnum.Hat, i); }
             
             for (int i = 0; i < pantDataList.Count; i++)
             {
                 PantData pantData = pantDataList[i];
-                SpawnItemButton(pantData.GetTypeIcon, pantData.PantInfo(), pantData.Price, ItemDataSOManager.ItemTypeEnum.Pant);
+                SpawnItemButton(pantData.GetTypeIcon, pantData.PantInfo(), pantData.Price, ItemDataSOManager.ItemTypeEnum.Pant, i);
             }
             
             for (int i = 0; i < shieldDataList.Count; i++)
             {
                 ShieldData shieldData = shieldDataList[i];
-                SpawnItemButton(shieldData.GetTypeIcon, shieldData.ShieldInfo(), shieldData.Price, ItemDataSOManager.ItemTypeEnum.Shield);
+                SpawnItemButton(shieldData.GetTypeIcon, shieldData.ShieldInfo(), shieldData.Price, ItemDataSOManager.ItemTypeEnum.Shield, i);
             }
             
             for (int i = 0; i < skinSetDataList.Count; i++)
             {
                 SkinSetData skinSetData = skinSetDataList[i];
-                SpawnItemButton(skinSetData.GetTypeIcon, skinSetData.SkinSetInfo(), skinSetData.Price, ItemDataSOManager.ItemTypeEnum.SkinSet);
+                SpawnItemButton(skinSetData.GetTypeIcon, skinSetData.SkinSetInfo(), skinSetData.Price, ItemDataSOManager.ItemTypeEnum.SkinSet, i);
             }
         }
         private void SpawnItemButton(Sprite getIcon, String getInfo, int getPrice, 
-                                        ItemDataSOManager.ItemTypeEnum itemType)
+                                        ItemDataSOManager.ItemTypeEnum itemType, int index)
         {
             ItemButtonUI itemButton = Instantiate(itemButtonPrefab, itemParent);
-            //Image itemButtonImage = Instantiate(itemSelectionImage, itemButton.transform);
             
-            itemButton.SetData(getIcon, itemType, getInfo, getPrice);
-            
+            itemButton.SetData(getIcon, itemType, getInfo, getPrice, index);
             itemButton.gameObject.SetActive(false);
-            //itemButtonImage.gameObject.SetActive(false);
-            
-            //itemSelectionImages.Add(itemButtonImage);
             itemButtonList.Add(itemButton);
             
             GetItemButtonList(itemType).Add(itemButton);
@@ -147,11 +145,13 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
 
         public void SetButtonSelection(ItemButtonUI itemButton)
         {
-            // itemSelectionImages[itemButtonList.IndexOf(currentButton)].gameObject.SetActive(false);
-            // itemSelectionImages[itemButtonList.IndexOf(itemButton)].gameObject.SetActive(true);
             currentButton = itemButton;
             SetItemInfo(itemButton);
             SetBottomBarButton(itemButton);
+            if (itemButton is not null)
+            {
+                playerOnScene.TryItemInSkinShop(itemButton.ItemType, GetItemButtonList(itemButton.ItemType).IndexOf(itemButton));
+            }
         }
 
         private void SetBottomBarButton(ItemButtonUI itemButton)
@@ -168,12 +168,11 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
                 case 0:
                     buyButton.gameObject.SetActive(true);
                     equipButton.gameObject.SetActive(false);
-                    buyButtonText.text = "Buy";
+                    buyButtonText.text = "BUY " + itemButton.ItemPrice;
                     break;
                 case 1:
                     buyButton.gameObject.SetActive(false);
                     equipButton.gameObject.SetActive(true);
-                    buyButtonText.text = "Equip";
                     break;
                 case 2:
                     buyButton.gameObject.SetActive(false);
@@ -187,7 +186,6 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             for (int i = 0; i < itemButtonList.Count; i++)
             {
                 itemButtonList[i].gameObject.SetActive(false);
-                //itemSelectionImages[i].gameObject.SetActive(false);
             }
         }
     }

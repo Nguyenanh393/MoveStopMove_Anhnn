@@ -7,6 +7,12 @@ namespace _Game.Script.GamePlay.Weapon
     {
         [SerializeField] private Character.Character.Character owner;
 
+        public Character.Character.Character Owner
+        {
+            get => owner;
+            set => owner = value;
+        }
+
         public void SetVisible(bool isVisible)
         {
             gameObject.SetActive(isVisible);

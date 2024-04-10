@@ -3,7 +3,10 @@ using _Game.Script.DataSO.ItemData.HatData;
 using _Game.Script.DataSO.ItemData.PantData;
 using _Game.Script.DataSO.ItemData.ShiedData;
 using _Game.Script.DataSO.ItemData.ShieldData;
+using _Game.Script.DataSO.ItemData.SkinSetData;
 using _Game.Script.DataSO.WeaponData;
+using _Game.Script.OtherOpti;
+using _Game.Script.UserData;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -25,20 +28,22 @@ namespace _Game.Script.GamePlay.Character.Character
         private Hat currentHat;
         private Material currentPant;
         private Shield currentShield;
+        private Player.Player currentSkinSet;
 
         protected void OnInit()
         {
             DespawnAllItem();
+            currentSkinSet = FindObjectOfType<Player.Player>();
         }
-        private void ChangeWeapon(int weaponIndex)
+
+        public void ChangeWeapon(int weaponIndex)
         {
-            Destroy(currentWeapon.gameObject);
             currentWeapon = Instantiate(weaponData.DataList[weaponIndex].GetType, WeaponParent);
+            currentWeapon.gameObject.SetActive(true);
         }
 
         protected void ChangeHat(int hatIndex)
         {
-            Destroy(currentHat.gameObject);
             currentHat = Instantiate(hatData.DataList[hatIndex].GetType, hatParent);
         }
 
@@ -46,40 +51,95 @@ namespace _Game.Script.GamePlay.Character.Character
         {
             currentPant = pantData.DataList[pantIndex].GetType;
             pantParent.gameObject.GetComponent<Renderer>().material = currentPant;
+            if (pantParent.gameObject.activeSelf == false)
+            {
+                pantParent.gameObject.SetActive(true);
+            }
         }
 
         protected void ChangeShield(int shieldIndex)
         {
-            Destroy(currentShield.gameObject);
             currentShield = Instantiate(shieldData.DataList[shieldIndex].GetType, shieldParent);
         }
-        
-        private void DespawnHat()
+
+        protected void DespawnHat()
         {
+            if (currentHat is null)
+            {
+                return;
+            }
             Destroy(currentHat.gameObject);
         }
-        
-        private void DespawnPant()
+
+        protected void DespawnPant()
         {
-            Destroy(currentPant);
+            if (currentPant is null)
+            {
+                return;
+            }
+            currentPant = null;
+            pantParent.gameObject.SetActive(false);
         }
-        
-        private void DespawnShield()
+
+        protected void DespawnShield()
         {
+            if (currentShield is null)
+            {
+                return;
+            }
             Destroy(currentShield.gameObject);
         }
         
         private void DespawnWeapon()
         {
+            if (currentWeapon is null)
+            {
+                return;
+            }
             Destroy(currentWeapon.gameObject);
+        }
+
+        protected void ChangeSkinSet(int itemId)
+        {
+            // if (itemId >= 0)
+            // {
+            //     currentSkinSet = SimplePool.Spawn<Player.Player>(ItemDataSOManager.Ins.SkinSetSO.DataList[itemId].GetType, transform);
+            // }
+            // else
+            // {
+            //     if (DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.SkinSet) is null)
+            //     {
+            //         currentSkinSet = SimplePool.Spawn<Player.Player>(PoolType.Player, transform);
+            //     }
+            // }
+            
+        }
+
+        protected void DespawnSkinSet()
+        {
+            // if (currentSkinSet is null)
+            // {
+            //     return;
+            // }   
+            // SimplePool.Despawn(currentSkinSet);
         }
         
         private void DespawnAllItem()
         {
+            //DespawnSkinSet();
             DespawnHat();
             DespawnPant();
             DespawnShield();
             DespawnWeapon();
+            SetAllNull();
+        }
+
+        private void SetAllNull()
+        {
+            currentHat = null;
+            currentPant = null;
+            currentShield = null;
+            currentWeapon = null;
         }
     }
 }

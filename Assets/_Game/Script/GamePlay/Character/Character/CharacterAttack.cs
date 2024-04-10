@@ -1,20 +1,42 @@
 ﻿using System;
 using System.Collections;
-using _Game.Script.Level;
-using _Game.Script.OtherOpti;
+using _Game.Script.DataSO.ItemData;
+using _Game.Script.DataSO.WeaponData;
+using _Game.Script.UserData;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Game.Script.GamePlay.Character.Character
 {
     public class CharacterAttack : GameUnit
     {
         [SerializeField] private AttackCircle attackCircle;
-        [SerializeField] private Weapon.Weapon weapon;
         [SerializeField] private Character character;
-        [SerializeField] private PoolType poolType;
-        
-        private bool canAttack = false;        
+ 
+        private PoolType poolType;
+        private Weapon.Weapon weapon;
+        private bool canAttack = false;   
         public bool CanAttack => canAttack;
+        private int weaponIndex;
+
+        public int WeaponIndex
+        {
+            get => weaponIndex;
+            set => weaponIndex = value;
+        }
+
+        public PoolType PoolType
+        {
+            get => poolType;
+            set => poolType = value;
+        }
+
+        public Weapon.Weapon Weapon
+        {
+            get => weapon;
+            set => weapon = value;
+        }
+
         private void Update()
         {
             if (attackCircle.EnemiesInRange.Count > 0)

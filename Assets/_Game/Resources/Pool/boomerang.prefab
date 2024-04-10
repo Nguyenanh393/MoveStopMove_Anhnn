@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4746716902133321637}
   m_LocalRotation: {x: -0.61687654, y: -0.6923468, z: 0.29404548, w: -0.23163894}
   m_LocalPosition: {x: -0.246, y: -0.048, z: 0.1}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb988e55b45fd948933f5d6be967aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 0
+  poolType: 1
   rb: {fileID: -3711650819150192052}
 --- !u!54 &-3711650819150192052
 Rigidbody:

@@ -26,13 +26,13 @@ namespace _Game.Script.GamePlay.Weapon.Bullet
             set => owner = value;
         }
 
-        private void Update()
-        {
-            if (attacker.IsDead)
-            {
-                OnDespawn();
-            }
-        }
+        // private void Update()
+        // {
+        //     if (attacker.IsDead)
+        //     {
+        //         OnDespawn();
+        //     }
+        // }
 
         public void OnInit()
         {

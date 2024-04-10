@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using _Game.Script.DataSO.ItemData;
+using _Game.Script.GamePlay.Character.Player;
 using _Game.Script.OtherOpti;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -15,6 +16,11 @@ namespace _Game.Script.UserData
         private void Awake()
         {
             LoadUserData();
+        }
+
+        private void DeleteData()
+        {
+            PlayerPrefs.DeleteAll();
         }
 
         private void OnApplicationQuit()
@@ -64,9 +70,10 @@ namespace _Game.Script.UserData
             return userData.GetItemState(itemType, itemIds);
         }
         
-        public int GetItemEquipped(ItemDataSOManager.ItemTypeEnum itemType, int itemIds)
+        public int? GetItemEquipped(ItemDataSOManager.ItemTypeEnum itemType)
         {
             return userData.GetItemEquipped(itemType);
         }
+        
     }
 }

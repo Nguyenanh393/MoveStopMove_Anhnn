@@ -1,7 +1,6 @@
 ﻿
 using _Game.Script.GamePlay.Character.Player;
 using _Game.Script.OtherOpti;
-using _Game.Script.RawInput;
 using _UI.Scripts.UI;
 
 namespace _Game.Script.GamePlay.Character.StateMachine.Player

@@ -26,7 +26,6 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         public void OnPointerDown(PointerEventData eventData)
         {
             ResetButtonHighlight();
-            Debug.Log(currentButtonHighlight);
             highlightImage.color = highlightColor;
             currentButtonHighlight = highlightImage;
         }

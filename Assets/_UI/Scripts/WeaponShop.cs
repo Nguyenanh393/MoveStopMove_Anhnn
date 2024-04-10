@@ -1,5 +1,7 @@
+using System;
 using _Game.Script.DataSO.ItemData;
 using _Game.Script.DataSO.WeaponData;
+using _Game.Script.GamePlay.Character.Player;
 using _Game.Script.UserData;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,12 +23,15 @@ namespace _UI.Scripts
         [SerializeField] private Button buyButton;
         
         private int currentWeaponIndex = 0;
+        private Player player;
         //private int currentEquipWeaponIndex = 0;
         private WeaponSO weaponSO;
 
         private void OnEnable()
         {
+            currentWeaponIndex = (int)DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Weapon);
             SpawnWeapon();
+            player = FindObjectOfType<Player>();
         }
 
         public void ExitButton()
@@ -124,6 +129,7 @@ namespace _UI.Scripts
                     }
                 }
             }
+            player.OnInitItem();
             UIManager.Ins.OpenUI<MainMenu>();
             Close(0);
         }

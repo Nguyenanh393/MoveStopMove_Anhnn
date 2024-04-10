@@ -16,7 +16,7 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         private ItemDataSOManager.ItemTypeEnum itemType;
         private String itemInfo;
         private int itemPrice;
-        
+        private int itemIds;
         private UnityAction onClickAction;
         
         public UnityAction OnClickAction
@@ -25,12 +25,13 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             set => onClickAction = value;
         }
         
-        public void SetData(Sprite icon, ItemDataSOManager.ItemTypeEnum nItemType, String nItemInfo, int nItemPrice)
+        public void SetData(Sprite icon, ItemDataSOManager.ItemTypeEnum nItemType, String nItemInfo, int nItemPrice, int nItemIds)
         {
             iconImage.sprite = icon;
             itemType = nItemType;
             itemInfo = nItemInfo;
             itemPrice = nItemPrice;
+            itemIds = nItemIds;
         }
         public ItemDataSOManager.ItemTypeEnum ItemType => itemType;
         
@@ -38,10 +39,10 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         
         public int ItemPrice => itemPrice;
         
+        public int ItemIds => itemIds;
         public void OnClick()
         {
             onClickAction?.Invoke();
         }
-
     }
 }

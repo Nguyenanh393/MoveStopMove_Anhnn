@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace _Game.Script.RawInput
+namespace _Game.Script.Manager.RawInput
 {
     public class InputManager : Singleton<InputManager>
     {

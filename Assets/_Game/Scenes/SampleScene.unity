@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPointSO: {fileID: 11400000, guid: 20dcbf09974f83c489261fc4516e1919, type: 2}
+  skinSetSO: {fileID: 11400000, guid: 8b383df900eb48e4a8081e373ab96925, type: 2}
 --- !u!1 &600938402
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userData:
     level: 0
-    coin: 1000
+    coin: 100
 --- !u!4 &712796799
 Transform:
   m_ObjectHideFlags: 0

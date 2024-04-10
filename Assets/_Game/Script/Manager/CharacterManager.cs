@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using _Game.Script.DataSO.ItemData;
+using _Game.Script.DataSO.ItemData.SkinSetData;
 using _Game.Script.GamePlay.Camera;
+using _Game.Script.GamePlay.Character.Character;
 using _Game.Script.GamePlay.Map;
-using _Game.Script.Level;
-using _Game.Script.Manager;
 using _Game.Script.OtherOpti;
+using _Game.Script.UserData;
 using _UI.Scripts.UI;
 using UnityEngine;
 
-namespace _Game.Script.GamePlay.Character.Character
+namespace _Game.Script.Manager
 {
     public class CharacterManager : Singleton<CharacterManager>
     {
         [SerializeField] private SpawnPointSO spawnPointSO;
+        [SerializeField] private SkinSetSO skinSetSO;
         
         private List<SpawnPoint> spawnPoints;
         private List<Character> characters = new List<Character>();
@@ -54,10 +56,21 @@ namespace _Game.Script.GamePlay.Character.Character
 
         public void SpawnDancingPlayer()
         {
-            Player.Player player = SimplePool.Spawn<Player.Player>(PoolType.Player,
+            int? skinIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.SkinSet);
+            PoolType poolType;
+            if (skinIndex == null)
+            {
+                poolType = PoolType.Player;
+            }
+            else
+            {
+                poolType = skinSetSO.DataList[skinIndex.Value].PoolType;
+            }
+            GamePlay.Character.Player.Player player = SimplePool.Spawn<GamePlay.Character.Player.Player>(poolType,
                 Vector3.zero, Quaternion.identity);
             player.TF.localScale = new Vector3(3f, 3f, 3f);
             player.SetAnim(AnimController.AnimType.Dance);
+            player.OnInitItem();
         }
         private void SpawnBotsAtFirstLoad()
         {
@@ -70,16 +83,16 @@ namespace _Game.Script.GamePlay.Character.Character
         
         private void SpawnBot(int i)
         {
-            Bot.Bot bot = SimplePool.Spawn<Bot.Bot>(PoolType.BotV2, 
+            GamePlay.Character.Bot.Bot bot = SimplePool.Spawn<GamePlay.Character.Bot.Bot>(PoolType.BotV2, 
                 spawnPoints[i].Position, spawnPoints[i].Rotation);
-            bot.OnInitBot();
             characters.Add(bot);
             botsOnScreen[i] = bot;
+            bot.OnInitBot();
         }
 
         private void SpawnPlayer()
         {
-            Player.Player player = SimplePool.Spawn<Player.Player>(PoolType.Player,
+            GamePlay.Character.Player.Player player = SimplePool.Spawn<GamePlay.Character.Player.Player>(PoolType.Player,
                 Vector3.zero, Quaternion.identity);
             player.OnInitPlayer();
             CameraManager.Ins.GetCamera.Target = player.TF;

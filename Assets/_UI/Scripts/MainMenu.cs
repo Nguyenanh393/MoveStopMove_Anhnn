@@ -6,7 +6,7 @@ using _Game.Script.GamePlay.Weapon;
 using _Game.Script.GamePlay.Weapon.Bullet;
 using _Game.Script.Level;
 using _Game.Script.Manager;
-using _Game.Script.RawInput;
+using _Game.Script.Manager.RawInput;
 using _Game.Script.UserData;
 using _UI.Scripts.UI;
 using UnityEngine;

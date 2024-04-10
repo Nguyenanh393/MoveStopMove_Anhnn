@@ -1,5 +1,5 @@
 using _Game.Script.Level;
-using _Game.Script.RawInput;
+using _Game.Script.Manager.RawInput;
 using UnityEngine;
 
 namespace _Game.Script.GamePlay.Character.Player

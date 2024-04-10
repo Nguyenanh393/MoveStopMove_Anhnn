@@ -15,7 +15,7 @@ namespace _Game.Script.UserData
         [JsonProperty]
         private Dictionary<ItemDataSOManager.ItemTypeEnum, List<int>> _itemStates = new Dictionary<ItemDataSOManager.ItemTypeEnum, List<int>>()
         {
-            {ItemDataSOManager.ItemTypeEnum.Weapon, new List<int>(){1,0,0}},
+            {ItemDataSOManager.ItemTypeEnum.Weapon, new List<int>(){2,0,0}},
             {ItemDataSOManager.ItemTypeEnum.Hat, new List<int>(){0,0,0,0,0,0,0,0}},
             {ItemDataSOManager.ItemTypeEnum.Pant, new List<int>(){0,0,0,0,0,0,0,0,0}},
             {ItemDataSOManager.ItemTypeEnum.Shield, new List<int>(){0}},
@@ -45,7 +45,7 @@ namespace _Game.Script.UserData
             return _itemStates[itemType][id];
         }
 
-        public int GetItemEquipped(ItemDataSOManager.ItemTypeEnum itemType)
+        public int? GetItemEquipped(ItemDataSOManager.ItemTypeEnum itemType)
         {
             for (int i = 0; i < _itemStates[itemType].Count; i++)
             {
@@ -55,7 +55,7 @@ namespace _Game.Script.UserData
                 }
             }
 
-            return 0;
+            return null;
         }
     }
 }

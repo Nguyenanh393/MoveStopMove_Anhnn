@@ -10,6 +10,7 @@ namespace _Game.Script.GamePlay.Character.Bot
     {
         [SerializeField] private BotAttack botAttack;
         [SerializeField] private BotMove botMove;
+        [SerializeField] private BotItem botItem;
         
         private IState<Bot> currentState;
         
@@ -46,6 +47,8 @@ namespace _Game.Script.GamePlay.Character.Bot
             botMove.OnInit();
             ChangeState(new BotIdleState());
             botAttack.OnInit();
+            // Debug.Log(botAttack.WeaponIndex);
+            botItem.ChangeWeapon(botAttack.WeaponIndex);
         }
         public void ChangeState(IState<Bot> state)
         {

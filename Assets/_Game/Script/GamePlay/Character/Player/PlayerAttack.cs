@@ -1,11 +1,15 @@
 using System.Collections;
+using _Game.Script.DataSO.ItemData;
+using _Game.Script.DataSO.WeaponData;
 using _Game.Script.GamePlay.Character.Character;
+using _Game.Script.UserData;
 using UnityEngine;
 
 namespace _Game.Script.GamePlay.Character.Player
 {
     public class PlayerAttack : CharacterAttack
     {
+        [SerializeField] private WeaponSO weaponSO;
         private bool attacked = false;
         public bool Attacked
         {
@@ -16,6 +20,9 @@ namespace _Game.Script.GamePlay.Character.Player
         public void OnInit()
         {
             attacked = false;
+            int weaponIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Weapon).Value;
+            Weapon = weaponSO.DataList[weaponIndex].GetType;
+            PoolType = weaponSO.DataList[weaponIndex].PoolType;
             base.OnInit();
         }
         public void Attack()
