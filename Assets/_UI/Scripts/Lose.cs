@@ -18,7 +18,7 @@ namespace _UI.Scripts
             LevelManager.Ins.DespawnMap();
             UIManager.Ins.CloseAll();
             UIManager.Ins.OpenUI<MainMenu>();
-            CharacterManager.Ins.SpawnDancingPlayer();
+            CharacterManager.Ins.SpawnDancingPlayer(-1);
             CameraManager.Ins.SetPosition(new Vector3(0, 10, -20));
             Close(0);
         }

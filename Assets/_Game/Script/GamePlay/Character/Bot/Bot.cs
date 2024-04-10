@@ -43,11 +43,10 @@ namespace _Game.Script.GamePlay.Character.Bot
 
         protected internal void OnInitBot()
         {
-            base.OnInit();
+            OnInit();
             botMove.OnInit();
             ChangeState(new BotIdleState());
             botAttack.OnInit();
-            // Debug.Log(botAttack.WeaponIndex);
             botItem.ChangeWeapon(botAttack.WeaponIndex);
         }
         public void ChangeState(IState<Bot> state)

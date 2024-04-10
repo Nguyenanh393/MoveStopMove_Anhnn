@@ -22,13 +22,6 @@ namespace _Game.Script.GamePlay.Character.Player
             get => player;
             set => player = value;
         }
-
-        // private void Start()
-        // {
-        //     OnInit();
-        // }
-        
-
         public void Move()
         {
             if (InputManager.Ins.HasJoystick())

@@ -6,6 +6,7 @@ using _Game.Script.DataSO.ItemData.PantData;
 using _Game.Script.DataSO.ItemData.ShieldData;
 using _Game.Script.DataSO.ItemData.SkinSetData;
 using _Game.Script.GamePlay.Character.Player;
+using _Game.Script.Manager;
 using _Game.Script.UserData;
 using _UI.Scripts.UI.SkinShopButton;
 using UnityEngine;
@@ -13,13 +14,13 @@ using UnityEngine.UI;
 
 namespace _UI.Scripts.UI.ItemSkinShopButton
 {
-    public class ItemSelectionUI : Singleton<ItemSelectionUI>
+    public class ItemSelectionUIManager : Singleton<ItemSelectionUIManager>
     {
         [SerializeField] private ItemButtonUI itemButtonPrefab;
         [SerializeField] private Image itemSelectionImage;
         [SerializeField] private Transform itemParent;
         [SerializeField] private TopBarButtonSO itemButtonSO;
-        // Đẩy sang SkinShop
+
         [SerializeField] private Button buyButton;
         [SerializeField] private Button equipButton;
         [SerializeField] private Text buyButtonText;
@@ -44,6 +45,11 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             get => currentButton;
             set => currentButton = value;
         }
+        public Player PlayerOnScene
+        {
+            get => playerOnScene;
+            set => playerOnScene = value;
+        }
         private void Awake()
         {
             hatDataList = ItemDataSOManager.Ins.HatSO.DataList;
@@ -55,7 +61,7 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
 
         private void Start()
         {
-            playerOnScene = FindObjectOfType<Player>();
+            playerOnScene = CharacterManager.Ins.DancingPlayer;
         }
 
         private void OnEnable()

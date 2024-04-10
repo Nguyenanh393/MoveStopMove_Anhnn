@@ -20,7 +20,7 @@ namespace _UI.Scripts
             LevelManager.Ins.DespawnMap();
             UIManager.Ins.CloseAll();
             UIManager.Ins.OpenUI<MainMenu>();
-            CharacterManager.Ins.SpawnDancingPlayer();
+            CharacterManager.Ins.SpawnDancingPlayer(-1);
             Close(0);
         }
     }

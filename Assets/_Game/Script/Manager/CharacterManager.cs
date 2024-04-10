@@ -3,6 +3,7 @@ using _Game.Script.DataSO.ItemData;
 using _Game.Script.DataSO.ItemData.SkinSetData;
 using _Game.Script.GamePlay.Camera;
 using _Game.Script.GamePlay.Character.Character;
+using _Game.Script.GamePlay.Character.Player;
 using _Game.Script.GamePlay.Map;
 using _Game.Script.OtherOpti;
 using _Game.Script.UserData;
@@ -22,9 +23,12 @@ namespace _Game.Script.Manager
         private float timer;
         private int countBotSpawned = 0;
 
+        private Player dancingPlayer;
+        
+        public Player DancingPlayer => dancingPlayer;
         private void Start()
         {
-            SpawnDancingPlayer();
+            SpawnDancingPlayer(-1);
         }
 
         private void Update()
@@ -54,23 +58,35 @@ namespace _Game.Script.Manager
             SpawnBotsAtFirstLoad();
         }
 
-        public void SpawnDancingPlayer()
+        public void SpawnDancingPlayer(int index)
         {
-            int? skinIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.SkinSet);
+            // index = -1 => sinh player, index != -1 => thử skinset
+            int? skinIndex;
             PoolType poolType;
-            if (skinIndex == null)
+            
+            if (index == -1)
             {
-                poolType = PoolType.Player;
-            }
+                skinIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.SkinSet);
+                if (skinIndex == null)
+                {
+                    poolType = PoolType.Player;
+                }
+                else
+                {
+                    poolType = skinSetSO.DataList[skinIndex.Value].PoolType;
+                }
+            } 
             else
             {
+                skinIndex = index;
                 poolType = skinSetSO.DataList[skinIndex.Value].PoolType;
             }
-            GamePlay.Character.Player.Player player = SimplePool.Spawn<GamePlay.Character.Player.Player>(poolType,
+            
+            dancingPlayer = SimplePool.Spawn<Player>(poolType,
                 Vector3.zero, Quaternion.identity);
-            player.TF.localScale = new Vector3(3f, 3f, 3f);
-            player.SetAnim(AnimController.AnimType.Dance);
-            player.OnInitItem();
+            dancingPlayer.TF.localScale = new Vector3(3f, 3f, 3f);
+            dancingPlayer.SetAnim(AnimController.AnimType.Dance);
+            dancingPlayer.OnInitItem();
         }
         private void SpawnBotsAtFirstLoad()
         {
@@ -92,7 +108,17 @@ namespace _Game.Script.Manager
 
         private void SpawnPlayer()
         {
-            GamePlay.Character.Player.Player player = SimplePool.Spawn<GamePlay.Character.Player.Player>(PoolType.Player,
+            int? skinIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.SkinSet);
+            PoolType poolType;
+            if (skinIndex == null)
+            {
+                poolType = PoolType.Player;
+            }
+            else
+            {
+                poolType = skinSetSO.DataList[skinIndex.Value].PoolType;
+            }
+            Player player = SimplePool.Spawn<Player>(poolType,
                 Vector3.zero, Quaternion.identity);
             player.OnInitPlayer();
             CameraManager.Ins.GetCamera.Target = player.TF;

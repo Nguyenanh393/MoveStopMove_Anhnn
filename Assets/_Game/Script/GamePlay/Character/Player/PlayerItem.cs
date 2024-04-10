@@ -1,6 +1,8 @@
 ﻿using _Game.Script.DataSO.ItemData;
 using _Game.Script.GamePlay.Character.Character;
+using _Game.Script.Manager;
 using _Game.Script.UserData;
+using _UI.Scripts.UI.ItemSkinShopButton;
 using UnityEngine;
 
 namespace _Game.Script.GamePlay.Character.Player
@@ -34,8 +36,9 @@ namespace _Game.Script.GamePlay.Character.Player
                     ChangeShield(itemId);
                     break;
                 case ItemDataSOManager.ItemTypeEnum.SkinSet:
-                    DespawnSkinSet();
-                    ChangeSkinSet(itemId);
+                    Destroy(CharacterManager.Ins.DancingPlayer.gameObject);
+                    CharacterManager.Ins.SpawnDancingPlayer(itemId);
+                    ItemSelectionUIManager.Ins.PlayerOnScene = CharacterManager.Ins.DancingPlayer;
                     break;
             }
         }
@@ -45,15 +48,9 @@ namespace _Game.Script.GamePlay.Character.Player
             int? weaponIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Weapon);
             if (weaponIndex is not null)
             {
-                Debug.Log("Weapon index: " + weaponIndex);
                 ChangeWeapon((int)weaponIndex);
             }
-            int? skinSetIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.SkinSet);
-            if (skinSetIndex is not null)
-            {
-                ChangeSkinSet((int)skinSetIndex);
-                return;
-            }
+            
             int? hatIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Hat);
             if (hatIndex is not null)
             {

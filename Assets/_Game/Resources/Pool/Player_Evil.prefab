@@ -552,7 +552,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066380231694982824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1783,9 +1783,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb27625dbca42cbbe5c3dc975a04a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hatParent: {fileID: 0}
-  pantParent: {fileID: 0}
-  shieldParent: {fileID: 0}
+  hatParent: {fileID: 5150318580939083059}
+  pantParent: {fileID: 5385259210074791930}
+  shieldParent: {fileID: 4646382470629046846}
   WeaponParent: {fileID: 5150318581663574120}
   hatData: {fileID: 11400000, guid: efe62127da2bc7a4c8b68a8ef04cff94, type: 2}
   pantData: {fileID: 11400000, guid: affb5feaf435b364385e66f4a4a7bbe4, type: 2}

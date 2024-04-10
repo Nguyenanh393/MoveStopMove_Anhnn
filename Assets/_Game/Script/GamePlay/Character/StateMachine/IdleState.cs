@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using _Game.Script.GamePlay.Character.Character;
-using UnityEngine;
-
-public class IdleState : IState<Character>
+namespace _Game.Script.GamePlay.Character.StateMachine
 {
-    public void OnEnter(Character t)
+    public class IdleState : IState<Character.Character>
     {
+        public void OnEnter(Character.Character t)
+        {
+
+        }
+
+        public void OnExecute(Character.Character t)
+        {
+
+        }
+
+        public void OnExit(Character.Character t)
+        {
+
+        }
 
     }
-
-    public void OnExecute(Character t)
-    {
-
-    }
-
-    public void OnExit(Character t)
-    {
-
-    }
-
 }

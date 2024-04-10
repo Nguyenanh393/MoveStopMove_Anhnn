@@ -20,10 +20,10 @@ namespace _UI.Scripts.UI.SkinShopButton
 
         public void OnClick()
         {
-            ItemSelectionUI.Ins.DespawnButton();
-            ItemSelectionUI.Ins.SpawnItemButtons(ItemSelectionUI.Ins.GetItemButtonList(itemType));
-            ItemSelectionUI.Ins.CurrentButton = null;
-            ItemSelectionUI.Ins.SetButtonSelection(ItemSelectionUI.Ins.CurrentButton);
+            ItemSelectionUIManager.Ins.DespawnButton();
+            ItemSelectionUIManager.Ins.SpawnItemButtons(ItemSelectionUIManager.Ins.GetItemButtonList(itemType));
+            ItemSelectionUIManager.Ins.CurrentButton = null;
+            ItemSelectionUIManager.Ins.SetButtonSelection(ItemSelectionUIManager.Ins.CurrentButton);
         }
     }
 }

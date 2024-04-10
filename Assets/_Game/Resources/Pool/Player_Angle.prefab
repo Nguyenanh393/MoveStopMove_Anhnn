@@ -788,7 +788,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2600591143403008714}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2728,8 +2728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeaa995f5012dc4ca24d5ffd2010bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCircle: {fileID: 1045199058811204814, guid: e746d4658c3ab8d4fbceb8e82bdfd399, type: 3}
-  character: {fileID: 3389380619327740320, guid: e746d4658c3ab8d4fbceb8e82bdfd399, type: 3}
+  attackCircle: {fileID: 9206480740684927463}
+  character: {fileID: 6794746298275478665}
   weaponSO: {fileID: 11400000, guid: 1e8d2837dff8ccd47a738a2965e9eb1b, type: 2}
 --- !u!114 &6794746298275478665
 MonoBehaviour:
@@ -2765,9 +2765,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb27625dbca42cbbe5c3dc975a04a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hatParent: {fileID: 0}
-  pantParent: {fileID: 0}
-  shieldParent: {fileID: 0}
+  hatParent: {fileID: 9206480740441022801}
+  pantParent: {fileID: 8216305949576082328}
+  shieldParent: {fileID: 8315442225195430909}
   WeaponParent: {fileID: 9206480741316625418}
   hatData: {fileID: 11400000, guid: efe62127da2bc7a4c8b68a8ef04cff94, type: 2}
   pantData: {fileID: 11400000, guid: affb5feaf435b364385e66f4a4a7bbe4, type: 2}

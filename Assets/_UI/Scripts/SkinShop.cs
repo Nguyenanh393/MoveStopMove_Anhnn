@@ -22,7 +22,7 @@ namespace _UI.Scripts
         
         public void OnClickBuyButton()
         {
-            ItemButtonUI itemButtonUI = ItemSelectionUI.Ins.CurrentButton;
+            ItemButtonUI itemButtonUI = ItemSelectionUIManager.Ins.CurrentButton;
             DataManager.Ins.SetUserDataCoin(DataManager.Ins.GetUserDataCoin() - itemButtonUI.ItemPrice);
             DataManager.Ins.SetUserDataItemState(itemButtonUI.ItemType, itemButtonUI.ItemIds, 1);
             buyButton.gameObject.SetActive(false);
@@ -31,16 +31,16 @@ namespace _UI.Scripts
         
         public void OnClickEquipButton()
         {
-            ItemButtonUI itemButtonUI = ItemSelectionUI.Ins.CurrentButton;
+            ItemButtonUI itemButtonUI = ItemSelectionUIManager.Ins.CurrentButton;
             int? itemEquipped = DataManager.Ins.GetItemEquipped(itemButtonUI.ItemType);
             if (itemEquipped != null)
             {
                 DataManager.Ins.SetUserDataItemState(itemButtonUI.ItemType, (int)itemEquipped, 1);
             }
             DataManager.Ins.SetUserDataItemState(itemButtonUI.ItemType, itemButtonUI.ItemIds, 2);
-            for (int i = 0; i < ItemSelectionUI.Ins.GetItemButtonList(itemButtonUI.ItemType).Count; i++)
+            for (int i = 0; i < ItemSelectionUIManager.Ins.GetItemButtonList(itemButtonUI.ItemType).Count; i++)
             {
-                ItemSelectionUI.Ins.GetItemButtonList(itemButtonUI.ItemType)[i].gameObject.SetActive(true);
+                ItemSelectionUIManager.Ins.GetItemButtonList(itemButtonUI.ItemType)[i].gameObject.SetActive(true);
             }
             equipButton.gameObject.SetActive(false);
         }

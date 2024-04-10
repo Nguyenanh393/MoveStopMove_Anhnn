@@ -28,12 +28,10 @@ namespace _Game.Script.GamePlay.Character.Character
         private Hat currentHat;
         private Material currentPant;
         private Shield currentShield;
-        private Player.Player currentSkinSet;
 
         protected void OnInit()
         {
             DespawnAllItem();
-            currentSkinSet = FindObjectOfType<Player.Player>();
         }
 
         public void ChangeWeapon(int weaponIndex)
@@ -98,35 +96,9 @@ namespace _Game.Script.GamePlay.Character.Character
             }
             Destroy(currentWeapon.gameObject);
         }
-
-        protected void ChangeSkinSet(int itemId)
-        {
-            // if (itemId >= 0)
-            // {
-            //     currentSkinSet = SimplePool.Spawn<Player.Player>(ItemDataSOManager.Ins.SkinSetSO.DataList[itemId].GetType, transform);
-            // }
-            // else
-            // {
-            //     if (DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.SkinSet) is null)
-            //     {
-            //         currentSkinSet = SimplePool.Spawn<Player.Player>(PoolType.Player, transform);
-            //     }
-            // }
-            
-        }
-
-        protected void DespawnSkinSet()
-        {
-            // if (currentSkinSet is null)
-            // {
-            //     return;
-            // }   
-            // SimplePool.Despawn(currentSkinSet);
-        }
         
         private void DespawnAllItem()
         {
-            //DespawnSkinSet();
             DespawnHat();
             DespawnPant();
             DespawnShield();

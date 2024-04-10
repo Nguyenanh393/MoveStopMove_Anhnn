@@ -79,12 +79,13 @@ namespace _Game.Script.GamePlay.Character.Character
 
         private Character GetTarget()
         {
-            if (canAttack)
-            {
-                if (attackCircle.EnemiesInRange.Count > 0 
-                    &&!attackCircle.EnemiesInRange[0].IsDead) return attackCircle.EnemiesInRange[0];
-            }
-            return null;
+            // if (canAttack)
+            // {
+            //     if (attackCircle.EnemiesInRange.Count > 0 
+            //         &&!attackCircle.EnemiesInRange[0].IsDead) return attackCircle.EnemiesInRange[0];
+            // }
+            // return null;
+            return attackCircle.EnemiesInRange[0];
         }
         private void OnHitVictim(Character attacker, Character victim)
         {

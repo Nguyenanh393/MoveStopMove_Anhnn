@@ -70,12 +70,13 @@ namespace _Game.Script.GamePlay.Character.Player
 
         public void OnInitPlayer()
         {
-            base.OnInit();
+            OnInit();
             ChangeState(new PlayerIdleState());
             variableJoystick = InputManager.Ins.GetJoystick;
             playerMove.VariableJoystick = variableJoystick;
             playerMove.Player = this;
             playerAttack.OnInit();
+            OnInitItem();
         }
 
         public bool isMoving() => InputManager.Ins.HasJoystick();
@@ -93,6 +94,5 @@ namespace _Game.Script.GamePlay.Character.Player
         {
             playerItem.OnInitItem();
         }
-        
     }
 }
