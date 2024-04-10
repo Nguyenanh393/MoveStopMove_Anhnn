@@ -477,7 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userData:
     level: 0
-    coin: 100
+    coin: 0
 --- !u!4 &712796799
 Transform:
   m_ObjectHideFlags: 0
@@ -814,7 +814,7 @@ MonoBehaviour:
     prefab: {fileID: 3389380619327740320, guid: e746d4658c3ab8d4fbceb8e82bdfd399, type: 3}
     amount: 0
     collect: 1
-  - root: {fileID: 0}
+  - root: {fileID: 738363391}
     prefab: {fileID: 4212689897990794896, guid: f23bf082284ec0d42b80c8e3fc541eed, type: 3}
     amount: 0
     collect: 1
