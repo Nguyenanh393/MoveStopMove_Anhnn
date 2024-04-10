@@ -85,6 +85,7 @@ namespace _Game.Script.GamePlay.Character.Player
         
         public void Attack() => playerAttack.Attack(); 
         
+        public TargetIndicator TargetIndicator => playerAttack.TargetIndicator;
         public void TryItemInSkinShop(ItemDataSOManager.ItemTypeEnum itemType, int itemId)
         {
             playerItem.TryItemInSkinShop(itemType, itemId);

@@ -37,7 +37,7 @@ namespace _Game.Script.GamePlay.Character.StateMachine.Player
 
         public void OnExit(GamePlay.Character.Player.Player t)
         {
-            
+            SimplePool.Despawn(t.TargetIndicator);
         }
     }
 }

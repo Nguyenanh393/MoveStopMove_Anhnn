@@ -18,13 +18,14 @@ namespace _Game.Script.GamePlay.Character.Character
         private bool canAttack = false;   
         public bool CanAttack => canAttack;
         private int weaponIndex;
-
+        private TargetIndicator targetIndicator;
         public int WeaponIndex
         {
             get => weaponIndex;
             set => weaponIndex = value;
         }
 
+        public TargetIndicator TargetIndicator => targetIndicator;
         public PoolType PoolType
         {
             get => poolType;
@@ -57,24 +58,26 @@ namespace _Game.Script.GamePlay.Character.Character
         }
         protected void Attack()
         {
-            
             if (canAttack)
             {
                 Character target = GetTarget();
                 
                 Vector3 position = target.TF.position;
                 character.TF.LookAt(position);
-
+                if (this is Player.PlayerAttack)
+                {
+                    // targetIndicator = SimplePool.Spawn<TargetIndicator>(PoolType.TargetIndicator, position, Quaternion.identity);
+                    // sinh target indicator ở vị trí của target lấy cha của target
+                    targetIndicator = SimplePool.Spawn<TargetIndicator>(PoolType.TargetIndicator, position, Quaternion.identity);
+                }
                 Vector3 characterPosition = TF.position;
                 Vector3 direction = (position - characterPosition).normalized;
                 Quaternion quaternion = Quaternion.LookRotation(direction) * Quaternion.Euler(-90, 0, 0);
                 
                 weapon.Throw(character, OnHitVictim, poolType, characterPosition + TF.forward * 0.8f + Vector3.up * 0.5f,  quaternion , direction, character);
                 weapon.SetVisible(false);
-                StartCoroutine(SetWeaponVisible(0.8f));
+                StartCoroutine(SetWeaponVisible(0.8f)); 
             }
-            
-            
         }
 
         private Character GetTarget()

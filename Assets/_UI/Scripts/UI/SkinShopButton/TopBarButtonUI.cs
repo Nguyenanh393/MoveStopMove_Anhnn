@@ -1,6 +1,4 @@
-﻿using System;
-using _Game.Script.DataSO;
-using _Game.Script.DataSO.ItemData;
+﻿using _Game.Script.DataSO.ItemData;
 using _Game.Script.Manager;
 using _UI.Scripts.UI.ItemSkinShopButton;
 using UnityEngine;
