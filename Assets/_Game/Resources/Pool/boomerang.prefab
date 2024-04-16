@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3768188712401782232}
   - component: {fileID: 7887244875481577345}
   - component: {fileID: 7881706487150845115}
-  - component: {fileID: -7272819078843699939}
   - component: {fileID: -3711650819150192052}
   - component: {fileID: -5350188694605215210}
+  - component: {fileID: -9113013992157488113}
   m_Layer: 0
   m_Name: boomerang
   m_TagString: Bullet
@@ -86,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-7272819078843699939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4746716902133321637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb988e55b45fd948933f5d6be967aa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolType: 1
-  rb: {fileID: -3711650819150192052}
 --- !u!54 &-3711650819150192052
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,3 +115,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.05
   m_Center: {x: 0.023739874, y: -0.0000000051293982, z: 0.000000002830013}
+--- !u!114 &-9113013992157488113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746716902133321637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7afa7e2d4ce74a4ebf0ac5cf043038d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolType: 1
+  rb: {fileID: -3711650819150192052}

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Game.Script.GamePlay.Camera
 {
-    public class CameraFlow : GameUnit
+    public class CameraFollow : GameUnit
     {
         [SerializeField] private Transform target;
         [SerializeField] private Vector3 offset;

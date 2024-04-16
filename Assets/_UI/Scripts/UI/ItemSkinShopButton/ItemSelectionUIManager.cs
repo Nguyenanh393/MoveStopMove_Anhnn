@@ -59,11 +59,6 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             SpawnAllItemButton();
         }
 
-        private void Start()
-        {
-            
-        }
-
         private void OnEnable()
         {
             SpawnItemButtons(itemButtonHatList);
@@ -134,10 +129,11 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
             
             itemButton.SetData(getIcon, itemType, getInfo, getPrice, index);
             itemButton.gameObject.SetActive(false);
+            
             itemButtonList.Add(itemButton);
             
             GetItemButtonList(itemType).Add(itemButton);
-            
+            SetImageState(itemButton);
             itemButton.OnClickAction += () =>
             {
                 SetButtonSelection(itemButton);
@@ -164,29 +160,51 @@ namespace _UI.Scripts.UI.ItemSkinShopButton
         {
             if (itemButton is null)
             {
-                buyButton.gameObject.SetActive(false);
-                equipButton.gameObject.SetActive(false);
+                SetBuyEquipButtonInfo(false, false, false, "");
                 return;
             }
-            int itemState = DataManager.Ins.GetItemState(itemButton.ItemType, GetItemButtonList(itemButton.ItemType).IndexOf(itemButton));
+
+            int itemState = GetStateItemButton(itemButton);
             switch (itemState)
             {
                 case 0:
-                    buyButton.gameObject.SetActive(true);
-                    equipButton.gameObject.SetActive(false);
-                    buyButtonText.text = "BUY " + itemButton.ItemPrice;
+                    SetBuyEquipButtonInfo(true, false,false, itemButton.ItemPrice.ToString());
                     break;
                 case 1:
-                    buyButton.gameObject.SetActive(false);
-                    equipButton.gameObject.SetActive(true);
+                    SetBuyEquipButtonInfo(false, true, false, "");
                     break;
                 case 2:
-                    buyButton.gameObject.SetActive(false);
-                    equipButton.gameObject.SetActive(false);
+                    SetBuyEquipButtonInfo(false, false, true, "");
                     break;
             }
         }
 
+        private void SetBuyEquipButtonInfo(bool isBuyButtonOn, bool isEquipButtonOn,
+                                            bool isUnequipButtonOn, string buyButtonInfo)
+        {
+            buyButton.gameObject.SetActive(isBuyButtonOn);
+            equipButton.gameObject.SetActive(isEquipButtonOn);
+            // unequipButton
+            buyButtonText.text = "BUY " + buyButtonInfo;
+        }
+
+        private int GetStateItemButton(ItemButtonUI itemButton)
+        {
+            return DataManager.Ins.GetItemState(itemButton.ItemType, GetItemButtonList(itemButton.ItemType).IndexOf(itemButton));
+        }
+
+        private void SetImageState(ItemButtonUI itemButton)
+        {
+            int itemState = GetStateItemButton(itemButton);
+            if (itemState > 0)
+            {
+                itemButton.StateImage.gameObject.SetActive(false);
+            }
+            else
+            {
+                itemButton.StateImage.gameObject.SetActive(true);
+            }
+        }
         public void DespawnButton()
         {
             for (int i = 0; i < itemButtonList.Count; i++)

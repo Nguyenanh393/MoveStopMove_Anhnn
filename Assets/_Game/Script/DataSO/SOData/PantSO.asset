@@ -16,36 +16,45 @@ MonoBehaviour:
   - type: {fileID: 2100000, guid: d465bb7ecdfcc574cae942ad7395f413, type: 2}
     TypeIcon: {fileID: 21300000, guid: 1f7e9eb236c8768498ad5d8078d2533d, type: 3}
     price: 500
+    poolType: 18
     moveSpeedBonusPercent: 8
   - type: {fileID: 2100000, guid: cadd766beb5ea8d40930dd71cef22f81, type: 2}
     TypeIcon: {fileID: 21300000, guid: 3ddbc9e0f3f883a46b1ba9635f87c222, type: 3}
     price: 500
+    poolType: 19
     moveSpeedBonusPercent: 8
   - type: {fileID: 2100000, guid: a97dc6e3972d71642a66168fa8c983fa, type: 2}
     TypeIcon: {fileID: 21300000, guid: 2652851e5f7772041add8ebe7d548f2b, type: 3}
     price: 500
+    poolType: 20
     moveSpeedBonusPercent: 8
   - type: {fileID: 2100000, guid: 618c8210273d4d6428926100ff9b4469, type: 2}
     TypeIcon: {fileID: 21300000, guid: ae9d58ecee0e3f848b8fedb3f2c67648, type: 3}
     price: 500
+    poolType: 21
     moveSpeedBonusPercent: 8
   - type: {fileID: 2100000, guid: 1ca42a1a37bc146488a52741f3ae70fd, type: 2}
     TypeIcon: {fileID: 21300000, guid: 5433d4b044040c44487399b59f52e2b4, type: 3}
     price: 500
+    poolType: 22
     moveSpeedBonusPercent: 8
   - type: {fileID: 2100000, guid: 4a259b9cc805c8143a692d1dacb8dd09, type: 2}
     TypeIcon: {fileID: 21300000, guid: ea8161e4ed231be438fe9e968bc8752c, type: 3}
     price: 500
+    poolType: 23
     moveSpeedBonusPercent: 8
   - type: {fileID: 2100000, guid: 31e3cef87c941954dab6709d006063c0, type: 2}
     TypeIcon: {fileID: 21300000, guid: 4d6b3cb74098a8640b03cd004d1dcdbb, type: 3}
     price: 500
+    poolType: 24
     moveSpeedBonusPercent: 8
   - type: {fileID: 2100000, guid: 5e6719611013eb2489a8a7a237fc4ef1, type: 2}
     TypeIcon: {fileID: 21300000, guid: a39a74b87842b704ab4bc6eec7e6c287, type: 3}
     price: 500
+    poolType: 25
     moveSpeedBonusPercent: 8
   - type: {fileID: 2100000, guid: bb2a044a528595441898218777de38ec, type: 2}
     TypeIcon: {fileID: 21300000, guid: 343f00cc518f2c34090d54d64a12c62e, type: 3}
     price: 500
+    poolType: 26
     moveSpeedBonusPercent: 8

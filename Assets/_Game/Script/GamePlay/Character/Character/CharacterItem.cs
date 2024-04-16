@@ -36,13 +36,12 @@ namespace _Game.Script.GamePlay.Character.Character
 
         public void ChangeWeapon(int weaponIndex)
         {
-            currentWeapon = Instantiate(weaponData.DataList[weaponIndex].GetType, WeaponParent);
-            currentWeapon.gameObject.SetActive(true);
+            currentWeapon = SimplePool.Spawn<Weapon.Weapon>(weaponData.DataList[weaponIndex].GetType.poolType, WeaponParent);
         }
 
         protected void ChangeHat(int hatIndex)
         {
-            currentHat = Instantiate(hatData.DataList[hatIndex].GetType, hatParent);
+            currentHat = SimplePool.Spawn<Hat>(hatData.DataList[hatIndex].GetType, hatParent);
         }
 
         protected void ChangePant(int pantIndex)
@@ -57,7 +56,7 @@ namespace _Game.Script.GamePlay.Character.Character
 
         protected void ChangeShield(int shieldIndex)
         {
-            currentShield = Instantiate(shieldData.DataList[shieldIndex].GetType, shieldParent);
+            currentShield = SimplePool.Spawn<Shield>(shieldData.DataList[shieldIndex].GetType.poolType, shieldParent);
         }
 
         protected void DespawnHat()
@@ -66,7 +65,7 @@ namespace _Game.Script.GamePlay.Character.Character
             {
                 return;
             }
-            Destroy(currentHat.gameObject);
+            SimplePool.Despawn(currentHat);
         }
 
         protected void DespawnPant()
@@ -85,7 +84,7 @@ namespace _Game.Script.GamePlay.Character.Character
             {
                 return;
             }
-            Destroy(currentShield.gameObject);
+            SimplePool.Despawn(currentShield);
         }
         
         private void DespawnWeapon()
@@ -94,7 +93,7 @@ namespace _Game.Script.GamePlay.Character.Character
             {
                 return;
             }
-            Destroy(currentWeapon.gameObject);
+            SimplePool.Despawn(currentWeapon);
         }
         
         private void DespawnAllItem()

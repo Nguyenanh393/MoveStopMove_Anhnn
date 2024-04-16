@@ -36,10 +36,18 @@ namespace _Game.Script.GamePlay.Character.Player
                     ChangeShield(itemId);
                     break;
                 case ItemDataSOManager.ItemTypeEnum.SkinSet:
-                    Destroy(CharacterManager.Ins.DancingPlayer.gameObject);
-                    CharacterManager.Ins.SpawnDancingPlayer(itemId);
-                    ItemSelectionUIManager.Ins.PlayerOnScene = CharacterManager.Ins.DancingPlayer;
+                    // SimplePool.Despawn(CharacterManager.Ins.DancingPlayer);
+                    // CharacterManager.Ins.SpawnDancingPlayer(itemId);
+                    // ItemSelectionUIManager.Ins.PlayerOnScene = CharacterManager.Ins.DancingPlayer;
+                    // break;
+                    if (CharacterManager.Ins.DancingPlayer.poolType != ItemDataSOManager.Ins.SkinSetSO.DataList[itemId].PoolType)
+                    {
+                        SimplePool.Despawn(CharacterManager.Ins.DancingPlayer);
+                        CharacterManager.Ins.SpawnDancingPlayer(itemId);
+                        ItemSelectionUIManager.Ins.PlayerOnScene = CharacterManager.Ins.DancingPlayer;
+                    }
                     break;
+                    
             }
         }
 
@@ -58,9 +66,9 @@ namespace _Game.Script.GamePlay.Character.Player
             }
             
             int? pantIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Pant);
-            if (pantIndex is not null)
+            if (pantIndex.HasValue)
             {
-                ChangePant((int)pantIndex);
+                ChangePant(pantIndex.Value);
             }
             
             int? shieldIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Shield);

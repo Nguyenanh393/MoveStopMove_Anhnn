@@ -305,7 +305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51bd7ae03a94783a2e0fac4b80fdfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointSO: {fileID: 11400000, guid: 20dcbf09974f83c489261fc4516e1919, type: 2}
   skinSetSO: {fileID: 11400000, guid: 8b383df900eb48e4a8081e373ab96925, type: 2}
 --- !u!1 &600938402
 GameObject:
@@ -592,6 +591,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &877259633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 877259634}
+  m_Layer: 0
+  m_Name: None
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &877259634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877259633}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620468962}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901764758
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pool:
-  - root: {fileID: 0}
+  - root: {fileID: 877259634}
     prefab: {fileID: -1217041054267263278, guid: 5dee4544679b13448a5c125b4c539fec, type: 3}
     amount: 0
     collect: 1
@@ -816,6 +846,54 @@ MonoBehaviour:
     collect: 1
   - root: {fileID: 738363391}
     prefab: {fileID: 4212689897990794896, guid: f23bf082284ec0d42b80c8e3fc541eed, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: -106631955599218622, guid: 572dfca45abe729448dfbd4c8c6151d2, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: -9113013992157488113, guid: cb84ca698bc78d240b33e448e609dd09, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: -8670522239803337097, guid: 7ae941a685b82634fbb478c6c07a3cea, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: 1454463265039901951, guid: 6785d1459be42394089437aa58a276d1, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: -3518169175389207623, guid: 623c9d7fe258c2943b543b1dedd8540f, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: 1747697863132405740, guid: 880a293538f3edb4fb7afe42efba921c, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: -6888021700076362658, guid: 8711f3f845094ba4585666f249e2ef7e, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: 5196207727371800290, guid: 957bd708a94941c46b15d38f8cf894e3, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: 5758976317767717915, guid: 7b7958ed699eddb41b8d1023efb45a41, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: 1228442142435148744, guid: 7c9694f158dfea1418bd8bc10372fd03, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: 6794746298275478665, guid: ae7c546f4c27f59448642fef880d762d, type: 3}
+    amount: 0
+    collect: 1
+  - root: {fileID: 0}
+    prefab: {fileID: 7417903303546999019, guid: 1825aa84f9db3aa48a7a1065f05da1b4, type: 3}
     amount: 0
     collect: 1
   Particle: []
@@ -836,6 +914,7 @@ Transform:
   - {fileID: 204571462}
   - {fileID: 68535755}
   - {fileID: 738363391}
+  - {fileID: 877259634}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -868,7 +947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b724795c0e4e929e0065ff1cb1d8c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFlow: {fileID: 963194229}
+  cameraFollow: {fileID: 963194229}
 --- !u!4 &1699582068
 Transform:
   m_ObjectHideFlags: 0

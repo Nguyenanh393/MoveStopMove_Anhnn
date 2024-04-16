@@ -1,4 +1,3 @@
-using _Game.Script.DataSO.ItemData;
 using _Game.Script.Manager;
 using _Game.Script.UserData;
 using _UI.Scripts.UI.ItemSkinShopButton;
@@ -19,15 +18,20 @@ namespace _UI.Scripts
         {
             UIManager.Ins.OpenUI<MainMenu>();
             Close(0);
-            Destroy(ItemSelectionUIManager.Ins.PlayerOnScene.gameObject);
-            CharacterManager.Ins.SpawnDancingPlayer(-1);
+            //Destroy(ItemSelectionUIManager.Ins.PlayerOnScene.gameObject);
+            CharacterManager.Ins.RespawnDancingPlayer();
         }
         
         public void OnClickBuyButton()
         {
             ItemButtonUI itemButtonUI = ItemSelectionUIManager.Ins.CurrentButton;
+            if (DataManager.Ins.GetUserDataCoin() < itemButtonUI.ItemPrice)
+            {
+                return;
+            }
             DataManager.Ins.SetUserDataCoin(DataManager.Ins.GetUserDataCoin() - itemButtonUI.ItemPrice);
             DataManager.Ins.SetUserDataItemState(itemButtonUI.ItemType, itemButtonUI.ItemIds, 1);
+            itemButtonUI.StateImage.gameObject.SetActive(false);
             buyButton.gameObject.SetActive(false);
             equipButton.gameObject.SetActive(true);
         }

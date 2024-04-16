@@ -15,7 +15,7 @@ namespace _Game.Script.GamePlay.Character.Bot
             WeaponIndex = Random.Range(0, weaponSO.DataList.Count);
             WeaponData weaponData = weaponSO.DataList[WeaponIndex];
             Weapon = weaponData.GetType;
-            PoolType = weaponData.PoolType;
+            PoolType = weaponData.BulletPoolType;
             base.OnInit();
         }
         public bool Attacked

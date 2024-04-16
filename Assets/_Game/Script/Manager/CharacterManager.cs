@@ -15,17 +15,15 @@ namespace _Game.Script.Manager
 {
     public class CharacterManager : Singleton<CharacterManager>
     {
-        [SerializeField] private SpawnPointSO spawnPointSO;
         [SerializeField] private SkinSetSO skinSetSO;
         
-        private List<SpawnPoint> spawnPoints;
         private List<Character> characters = new List<Character>();
         private Character[] botsOnScreen = new Character[Constances.Range.characterOnScreen - 1];
         private float timer;
         private int countBotSpawned = 0;
 
         private Player dancingPlayer;
-        
+        private Player player;
         public Player DancingPlayer => dancingPlayer;
         private void Start()
         {
@@ -53,7 +51,6 @@ namespace _Game.Script.Manager
         }
         public void LoadCharacter()
         {
-            spawnPoints = spawnPointSO.SpawnPoints;
             CollectAll();
             SpawnPlayer();
             SpawnBotsAtFirstLoad();
@@ -88,21 +85,52 @@ namespace _Game.Script.Manager
             dancingPlayer.TF.localScale = new Vector3(3f, 3f, 3f);
             dancingPlayer.SetAnim(AnimController.AnimType.Dance);
             dancingPlayer.OnInitItem();
-            //ItemSelectionUIManager.Ins.PlayerOnScene = dancingPlayer;
+        }
+        
+        public void RespawnDancingPlayer()
+        {
+            int? skinIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.SkinSet);
+            if (skinIndex.HasValue)
+            {
+                if (ItemSelectionUIManager.Ins.PlayerOnScene.poolType != skinSetSO.DataList[skinIndex.Value].PoolType)
+                {
+                    SimplePool.Despawn(dancingPlayer);
+                    SpawnDancingPlayer(skinIndex.Value);
+                    ItemSelectionUIManager.Ins.PlayerOnScene = dancingPlayer;
+                    return;
+                }
+            } 
+            else
+            {
+                if (ItemSelectionUIManager.Ins.PlayerOnScene.poolType != PoolType.Player)
+                {
+                    SimplePool.Despawn(dancingPlayer);
+                    SpawnDancingPlayer(-1);
+                    ItemSelectionUIManager.Ins.PlayerOnScene = dancingPlayer;
+                    return;
+                } 
+            }
+            ItemSelectionUIManager.Ins.PlayerOnScene.SetAnim(AnimController.AnimType.Dance);
+            ItemSelectionUIManager.Ins.PlayerOnScene.OnInitItem();
         }
         private void SpawnBotsAtFirstLoad()
         {
-            for (int i = 0; i < spawnPoints.Count; i++)
+            for (int i = 0; i < botsOnScreen.Length; i++)
             {
                 SpawnBot(i);
             }
-            countBotSpawned = spawnPoints.Count;
+            countBotSpawned = botsOnScreen.Length;
         }
         
         private void SpawnBot(int i)
         {
+            Vector3 position = new Vector3(Random.Range(-45f, 45f), 0, Random.Range(-30f, 30f));
+            while ((position - player.TF.position).magnitude < 10)
+            {
+                position = new Vector3(Random.Range(-45f, 45f), 0, Random.Range(-30f, 30f));
+            }
             GamePlay.Character.Bot.Bot bot = SimplePool.Spawn<GamePlay.Character.Bot.Bot>(PoolType.BotV2, 
-                spawnPoints[i].Position, spawnPoints[i].Rotation);
+                position, Quaternion.identity);
             characters.Add(bot);
             botsOnScreen[i] = bot;
             bot.OnInitBot();
@@ -120,7 +148,7 @@ namespace _Game.Script.Manager
             {
                 poolType = skinSetSO.DataList[skinIndex.Value].PoolType;
             }
-            Player player = SimplePool.Spawn<Player>(poolType,
+            player = SimplePool.Spawn<Player>(poolType,
                 Vector3.zero, Quaternion.identity);
             player.OnInitPlayer();
             CameraManager.Ins.GetCamera.Target = player.TF;
@@ -129,7 +157,7 @@ namespace _Game.Script.Manager
         
         private void RespawnBot()
         {
-            if (countBotSpawned == LevelManager.Ins.NumberOfBots) return;
+            if (countBotSpawned >= LevelManager.Ins.NumberOfBots) return;
             if (timer < Constances.Range.DefaultWaitSpawnTime)
             {
                 timer += Time.deltaTime;

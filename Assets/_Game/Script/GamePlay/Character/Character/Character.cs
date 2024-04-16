@@ -25,14 +25,14 @@ namespace _Game.Script.GamePlay.Character.Character
 
         private bool isDead;
         private int score = 0;
-        
-        public int Score => score;
+
+        protected int Score => score;
 
         protected void OnInit()
         {
             isDead = false;
             score = 0;
-            SetSize(0);
+            TF.localScale = Vector3.one;
         }
         
         public bool IsDead
@@ -46,9 +46,9 @@ namespace _Game.Script.GamePlay.Character.Character
             characterAnim.SetAnim(animType);
         }
 
-        private void SetSize(int index)
+        private void SetSize()
         {
-            TF.localScale = Vector3.one * sizeSO.DataList[index];
+            TF.localScale *= Constances.Range.BonusSizeRange; // hardcode cần sửa!
         }
 
         private void StopMove()
@@ -74,7 +74,7 @@ namespace _Game.Script.GamePlay.Character.Character
         public void SetScore()
         {
             score += 1;
-            SetSize(score);
+            SetSize();
         }
     }
 }

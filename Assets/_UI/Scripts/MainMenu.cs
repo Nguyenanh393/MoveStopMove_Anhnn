@@ -1,10 +1,3 @@
-using System;
-using System.Net.Mime;
-using _Game.Script.DataSO.WeaponData;
-using _Game.Script.GamePlay.Character.Character;
-using _Game.Script.GamePlay.Weapon;
-using _Game.Script.GamePlay.Weapon.Bullet;
-using _Game.Script.Level;
 using _Game.Script.Manager;
 using _Game.Script.Manager.RawInput;
 using _Game.Script.UserData;
@@ -55,5 +48,7 @@ namespace _UI.Scripts
         {
             coinText.text = DataManager.Ins.GetUserDataCoin().ToString();
         }
+        
+        
     }
 }

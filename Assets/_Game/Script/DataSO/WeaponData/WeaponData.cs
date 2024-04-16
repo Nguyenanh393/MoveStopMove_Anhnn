@@ -1,6 +1,7 @@
 using System;
 using _Game.Script.DataSO.ItemData;
 using _Game.Script.GamePlay.Weapon;
+using _Pool.Pool;
 using UnityEngine;
 
 namespace _Game.Script.DataSO.WeaponData
@@ -10,15 +11,15 @@ namespace _Game.Script.DataSO.WeaponData
     {
         [SerializeField] private float attackSpeed;
         [SerializeField] private float attackRangeBonus;
-        [SerializeField] private PoolType poolType;
-        
+        //[SerializeField] private PoolType poolType;
+        [SerializeField] private PoolType bulletPoolType;
         [SerializeField] private String weaponName;
         
         public float AttackSpeed => attackSpeed;
         public float AttackRangeBonus => attackRangeBonus;
-        public PoolType PoolType => poolType;
+        //public PoolType PoolType => poolType;
         public string WeaponName => weaponName;
-
+        public PoolType BulletPoolType => bulletPoolType;
         public string WeaponInfo()
         {
             String weaponInfo = "";

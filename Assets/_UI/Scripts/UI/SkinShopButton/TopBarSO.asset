@@ -17,7 +17,7 @@ MonoBehaviour:
     itemType: 0
   - icon: {fileID: 21300000, guid: 8e5b7ebcb3bb9844eb6678f88172c11f, type: 3}
     itemType: 1
-  - icon: {fileID: 21300000, guid: f26474d143dc84587bc9514d14d0674f, type: 3}
+  - icon: {fileID: 21300000, guid: c7aa269b192260a43a629e1a831c149b, type: 3}
     itemType: 2
   - icon: {fileID: 21300000, guid: 1cc258795aa45f64e836593aab40d479, type: 3}
     itemType: 3

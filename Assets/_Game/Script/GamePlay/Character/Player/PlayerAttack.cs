@@ -22,7 +22,8 @@ namespace _Game.Script.GamePlay.Character.Player
             attacked = false;
             int weaponIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Weapon).Value;
             Weapon = weaponSO.DataList[weaponIndex].GetType;
-            PoolType = weaponSO.DataList[weaponIndex].PoolType;
+            PoolType = weaponSO.DataList[weaponIndex].BulletPoolType;
+            WeaponData = weaponSO.DataList[weaponIndex];
             base.OnInit();
         }
         public void Attack()

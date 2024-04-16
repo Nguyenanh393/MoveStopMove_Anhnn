@@ -153,7 +153,25 @@ public enum PoolType
     Player,
     BotV2,
     PlayerAngle,
-    PlayerEvil
+    PlayerEvil,
+    
+    HatArrow,
+    HatCowboy,
+    HatCrown,
+    HatEar,
+    HatHat,
+    HatCap,
+    HatYellow,
+    HatHeadPhone,
+    
+    WeaponHammer,
+    WeaponKnife,
+    WeaponBoomerang,
+    
+    ShieldShield,
+    ShieldKhien,
+    
+    
 }
 
 

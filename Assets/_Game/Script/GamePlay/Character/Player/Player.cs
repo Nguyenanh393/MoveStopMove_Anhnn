@@ -8,7 +8,9 @@ using _Game.Script.OtherOpti;
 using _Game.Script.UserData;
 using _UI.Scripts;
 using _UI.Scripts.UI;
+using _UI.Scripts.UI.ItemSkinShopButton;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _Game.Script.GamePlay.Character.Player
 {
@@ -18,7 +20,7 @@ namespace _Game.Script.GamePlay.Character.Player
         [SerializeField] private PlayerAttack playerAttack;
         [SerializeField] private PlayerItem playerItem;
         
-        private VariableJoystick variableJoystick;
+        private FloatingJoystick floatingJoystick;
         public bool Attacked
         {
             get => playerAttack.Attacked;
@@ -53,6 +55,7 @@ namespace _Game.Script.GamePlay.Character.Player
                 DataManager.Ins.SetUserDataCoin(DataManager.Ins.GetUserDataCoin() + Score);
             }
         }
+        
         public void ChangeState(IState<Player> state)
         {
             if (currentState != null)
@@ -72,13 +75,14 @@ namespace _Game.Script.GamePlay.Character.Player
         {
             OnInit();
             ChangeState(new PlayerIdleState());
-            variableJoystick = InputManager.Ins.GetJoystick;
-            playerMove.VariableJoystick = variableJoystick;
+            floatingJoystick = InputManager.Ins.GetJoystick;
+            playerMove.FloatingJoystick = floatingJoystick;
             playerMove.Player = this;
             playerAttack.OnInit();
             OnInitItem();
         }
-
+        
+        
         public bool isMoving() => InputManager.Ins.HasJoystick();
         public void Move() => playerMove.Move();
         public void StopMove() => playerMove.StopMove();

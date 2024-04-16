@@ -39,5 +39,6 @@ namespace _Game.Script.GamePlay.Character.StateMachine.Player
         {
             SimplePool.Despawn(t.TargetIndicator);
         }
+        
     }
 }

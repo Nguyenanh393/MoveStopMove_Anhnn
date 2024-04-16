@@ -1,25 +1,37 @@
+using System;
+using _UI.Scripts.UI;
 using UnityEngine;
 
 namespace _Game.Script.Manager.RawInput
 {
     public class InputManager : Singleton<InputManager>
     {
-        [SerializeField] private VariableJoystick variableJoystick;
+        [SerializeField] private FloatingJoystick floatingJoystick;
 
-        public VariableJoystick GetJoystick => variableJoystick;
+        public FloatingJoystick GetJoystick => floatingJoystick;
+
+        private void Update()
+        {
+            // if (!GameManager.IsState(GameState.GamePlay)) return;
+            // if (HasJoystick())
+            // {
+            //     MoveJoystick();
+            // }
+        }
 
         public void FindJoystick()
         {
-            if (variableJoystick != null)
+            if (floatingJoystick != null)
             {
                 return;
             }
-            variableJoystick = FindObjectOfType<VariableJoystick>();
+            floatingJoystick = FindObjectOfType<FloatingJoystick>();
         }
 
         public bool HasJoystick()
         {
-            return variableJoystick.Direction != Vector2.zero;
+            //MoveJoystick();
+            return floatingJoystick.Direction != Vector2.zero;
         }
     }
 }

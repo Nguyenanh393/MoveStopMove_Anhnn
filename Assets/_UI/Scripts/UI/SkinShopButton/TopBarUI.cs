@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _UI.Scripts.UI.SkinShopButton
@@ -9,7 +10,8 @@ namespace _UI.Scripts.UI.SkinShopButton
         [SerializeField] private Transform topBarParent;
         [SerializeField] private TopBarButtonSO topBarButtonSO;
 
-        private void OnEnable()
+        private List<TopBarButtonUI> topBarButtonList = new List<TopBarButtonUI>();
+        private void Start()
         {
             SpawnListTopBarButton();
         }
@@ -19,6 +21,7 @@ namespace _UI.Scripts.UI.SkinShopButton
             for (int i = 0; i < topBarButtonSO.DataList.Count; i++)
             {
                 SpawnTopBarButton(i);
+                topBarButtonList.Add(topBarButtonPrefab);
             }
         }
 
@@ -27,5 +30,6 @@ namespace _UI.Scripts.UI.SkinShopButton
             TopBarButtonUI topBarButton = Instantiate(topBarButtonPrefab, topBarParent);
             topBarButton.SetData(topBarButtonSO.DataList[index].Icon, topBarButtonSO.DataList[index].ItemType);
         }
+        
     }
 }

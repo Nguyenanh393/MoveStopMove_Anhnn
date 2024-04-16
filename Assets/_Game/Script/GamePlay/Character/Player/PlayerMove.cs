@@ -9,12 +9,12 @@ namespace _Game.Script.GamePlay.Character.Player
         [SerializeField] private float speed;
         [SerializeField] private Player player;
         
-        private VariableJoystick variableJoystick;
+        private FloatingJoystick floatingJoystick;
         
-        public VariableJoystick VariableJoystick
+        public FloatingJoystick FloatingJoystick
         {
-            get => variableJoystick;
-            set => variableJoystick = value;
+            get => floatingJoystick;
+            set => floatingJoystick = value;
         }
         
         public Player Player
@@ -26,9 +26,7 @@ namespace _Game.Script.GamePlay.Character.Player
         {
             if (InputManager.Ins.HasJoystick())
             {
-                float angle = Mathf.Atan2(variableJoystick.Direction.x, variableJoystick.Direction.y) * Mathf.Rad2Deg;
-                // TF.rotation = Quaternion.Euler(0, angle, 0);
-                TF.LookAt(TF.position + new Vector3(variableJoystick.Direction.x, 0, variableJoystick.Direction.y));
+                TF.LookAt(TF.position + new Vector3(floatingJoystick.Direction.x, 0, floatingJoystick.Direction.y));
                 TF.position += TF.forward * (speed * Time.deltaTime);
             
             }

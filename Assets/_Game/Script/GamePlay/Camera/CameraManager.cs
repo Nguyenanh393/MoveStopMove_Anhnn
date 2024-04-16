@@ -6,12 +6,12 @@ namespace _Game.Script.GamePlay.Camera
 {
     public class CameraManager : Singleton<CameraManager>
     {
-        [SerializeField] private CameraFlow cameraFlow;
+        [FormerlySerializedAs("cameraFolow")] [FormerlySerializedAs("cameraFlow")] [SerializeField] private CameraFollow cameraFollow;
         
-        public CameraFlow GetCamera => cameraFlow;
+        public CameraFollow GetCamera => cameraFollow;
         public void SetPosition(Vector3 position)
         {
-            cameraFlow.TF.position = position;
+            cameraFollow.TF.position = position;
         }
     }
 }

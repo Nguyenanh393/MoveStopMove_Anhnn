@@ -17,7 +17,8 @@ namespace _Game.Script.OtherOpti
             public const float DefaultAttackRange = 5f;
             public const int characterOnScreen = 11;
             public const float DefaultWaitSpawnTime = 6f;
-        }
+            public const float BonusSizeRange = 1.05f; // 5% increase size
+         }
 
         public class Data
         {

@@ -3,6 +3,7 @@ using System.Collections;
 using _Game.Script.OtherOpti;
 using _Pool.Pool;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace _Game.Script.GamePlay.Weapon.Bullet
 {
@@ -14,6 +15,20 @@ namespace _Game.Script.GamePlay.Weapon.Bullet
         private Character.Character.Character attacker;
         private Character.Character.Character victim;
     
+        private float speed;
+        private float distance;
+        public float Speed
+        {
+            get => speed;
+            set => speed = value;
+        }
+        
+        public float Distance
+        {
+            get => distance;
+            set => distance = value;
+        }
+        
         public Vector3 Direction
         {
             get => direction;
@@ -25,29 +40,16 @@ namespace _Game.Script.GamePlay.Weapon.Bullet
             get => owner;
             set => owner = value;
         }
-
-        // private void Update()
-        // {
-        //     if (attacker.IsDead)
-        //     {
-        //         OnDespawn();
-        //     }
-        // }
-
-        public void OnInit()
-        {
-            rb.velocity = direction * 5f;
-        }
-
+        
         public void OnDespawn()
         {
             SimplePool.Despawn(this);
         }
 
-        protected Action<Character.Character.Character, Character.Character.Character> onHit;
+        private Action<Character.Character.Character, Character.Character.Character> onHit;
     
         // set bullet data for bullet
-        public virtual void OnInit(Character.Character.Character attacker, Action<Character.Character.Character, Character.Character.Character> onHit)
+        public void OnInit(Character.Character.Character attacker, Action<Character.Character.Character, Character.Character.Character> onHit)
         {
             this.attacker = attacker;
             this.onHit = onHit;
@@ -63,6 +65,7 @@ namespace _Game.Script.GamePlay.Weapon.Bullet
                     return;
                 }
                 onHit?.Invoke(attacker,victim);
+                OnDespawn();
             }
             else
             {
@@ -72,7 +75,15 @@ namespace _Game.Script.GamePlay.Weapon.Bullet
                 }
                 else
                 {
-                    Invoke(nameof(OnDespawn), 1f);
+                    // if (poolType == PoolType.Bomerang)
+                    // {
+                    //     Invoke(nameof(ReturnToOwner), 2f); // time => quang duong
+                    // }
+                    // else
+                    // {
+                        Invoke(nameof(OnDespawn), 1f); // time => quang duong
+                    // }
+                    
                 }
             }
         
@@ -83,6 +94,12 @@ namespace _Game.Script.GamePlay.Weapon.Bullet
             rb.velocity = Vector3.zero;
             yield return new WaitForSeconds(0.3f);
             OnDespawn();
+        }
+        
+        public void ReturnToOwner()
+        {
+            rb.velocity = (owner.TF.position - TF.position).normalized * 5f;
+            Invoke(nameof(OnDespawn), 2f); // quang duong
         }
     }
 }

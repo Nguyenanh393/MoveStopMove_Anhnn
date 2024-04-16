@@ -18,6 +18,7 @@ namespace _Game.Script.UserData
             LoadUserData();
         }
 
+        [ContextMenu("DeleteData")]
         private void DeleteData()
         {
             PlayerPrefs.DeleteAll();
