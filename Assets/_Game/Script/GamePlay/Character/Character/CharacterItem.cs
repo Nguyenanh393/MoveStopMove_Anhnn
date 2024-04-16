@@ -1,13 +1,7 @@
-﻿using _Game.Script.DataSO.ItemData;
-using _Game.Script.DataSO.ItemData.HatData;
+﻿using _Game.Script.DataSO.ItemData.HatData;
 using _Game.Script.DataSO.ItemData.PantData;
 using _Game.Script.DataSO.ItemData.ShiedData;
-using _Game.Script.DataSO.ItemData.ShieldData;
-using _Game.Script.DataSO.ItemData.SkinSetData;
 using _Game.Script.DataSO.WeaponData;
-using _Game.Script.OtherOpti;
-using _Game.Script.UserData;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Game.Script.GamePlay.Character.Character
