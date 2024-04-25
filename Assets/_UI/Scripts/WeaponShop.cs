@@ -3,6 +3,7 @@ using _Game.Script.DataSO.ItemData;
 using _Game.Script.DataSO.WeaponData;
 using _Game.Script.GamePlay.Character.Player;
 using _Game.Script.UserData;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +27,7 @@ namespace _UI.Scripts
         private Player player;
         //private int currentEquipWeaponIndex = 0;
         private WeaponSO weaponSO;
-
+        
         private void OnEnable()
         {
             currentWeaponIndex = (int)DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Weapon);

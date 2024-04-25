@@ -1628,6 +1628,7 @@ GameObject:
   - component: {fileID: 559198356485955686}
   - component: {fileID: 3426228978946918713}
   - component: {fileID: 3276432349020562427}
+  - component: {fileID: 7204679121387338209}
   m_Layer: 0
   m_Name: Bot
   m_TagString: Character
@@ -1726,8 +1727,9 @@ MonoBehaviour:
   animTransform: {fileID: 559198356900844154}
   characterAnim: {fileID: 559198356485955684}
   targetIndicator: {fileID: 0}
-  sizeSO: {fileID: 11400000, guid: ae9b4ebabc0c9c444886cf1881c0ce52, type: 2}
+  sizeSO: {fileID: 0}
   animController: {fileID: 9145938283001600000}
+  characterItem: {fileID: 3276432349020562427}
   botAttack: {fileID: 559198356485955686}
   botMove: {fileID: 559198356485955685}
   botItem: {fileID: 3276432349020562427}
@@ -1803,6 +1805,23 @@ MonoBehaviour:
   pantData: {fileID: 11400000, guid: affb5feaf435b364385e66f4a4a7bbe4, type: 2}
   shieldData: {fileID: 11400000, guid: 956fa49a1eb170c4eb47b6f0971d8daf, type: 2}
   weaponData: {fileID: 11400000, guid: 1e8d2837dff8ccd47a738a2965e9eb1b, type: 2}
+--- !u!114 &7204679121387338209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559198356485955690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  needBoxIndicator: 0
+  needArrowIndicator: 1
+  needDistanceText: 1
+  indicator: {fileID: 0}
 --- !u!1 &559198356501449388
 GameObject:
   m_ObjectHideFlags: 0

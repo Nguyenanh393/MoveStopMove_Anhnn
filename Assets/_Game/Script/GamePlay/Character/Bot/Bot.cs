@@ -24,7 +24,7 @@ namespace _Game.Script.GamePlay.Character.Bot
         
         void Update()
         {
-            if (IsDead) return;
+            if (IsDead || GameManager.Ins.IsPause) return;
             if (!GameManager.IsState(GameState.MainMenu))
             {
                 botMove.EnableNavMeshAgent();

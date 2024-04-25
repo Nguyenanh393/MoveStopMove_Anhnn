@@ -15,7 +15,8 @@ namespace _Game.Script.OtherOpti
         public class Range
         {
             public const float DefaultAttackRange = 5f;
-            public const int characterOnScreen = 11;
+            public const float DefaultAttackSpeed = 5f;
+            public const int characterOnScreen = 20;
             public const float DefaultWaitSpawnTime = 6f;
             public const float BonusSizeRange = 1.05f; // 5% increase size
          }

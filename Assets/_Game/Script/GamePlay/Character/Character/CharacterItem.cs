@@ -23,6 +23,10 @@ namespace _Game.Script.GamePlay.Character.Character
         private Material currentPant;
         private Shield currentShield;
 
+        public Weapon.Weapon CurrentWeapon => currentWeapon;
+        public Hat CurrentHat => currentHat;
+        public Material CurrentPant => currentPant;
+        public Shield CurrentShield => currentShield;
         protected void OnInit()
         {
             DespawnAllItem();
@@ -31,6 +35,7 @@ namespace _Game.Script.GamePlay.Character.Character
         public void ChangeWeapon(int weaponIndex)
         {
             currentWeapon = SimplePool.Spawn<Weapon.Weapon>(weaponData.DataList[weaponIndex].GetType.poolType, WeaponParent);
+//            Debug.Log(currentWeapon);
         }
 
         protected void ChangeHat(int hatIndex)

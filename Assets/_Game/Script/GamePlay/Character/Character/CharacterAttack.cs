@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using _Game.Script.DataSO.ItemData;
 using _Game.Script.DataSO.WeaponData;
 using _Game.Script.UserData;
@@ -18,15 +19,13 @@ namespace _Game.Script.GamePlay.Character.Character
         private bool canAttack = false;   
         public bool CanAttack => canAttack;
         private int weaponIndex;
-        private TargetIndicator targetIndicator;
         private WeaponData weaponData;
         public int WeaponIndex
         {
             get => weaponIndex;
             set => weaponIndex = value;
         }
-
-        public TargetIndicator TargetIndicator => targetIndicator;
+        
         public PoolType PoolType
         {
             get => poolType;
@@ -61,8 +60,10 @@ namespace _Game.Script.GamePlay.Character.Character
         protected void OnInit()
         {
             canAttack = false;
+            attackCircle.AttackRangeBonus += weaponData.AttackRangeBonus; // còn mấy loại khác nữa
             attackCircle.OnInit();
         }
+
         protected void Attack()
         {
             if (canAttack)
@@ -71,16 +72,13 @@ namespace _Game.Script.GamePlay.Character.Character
                 
                 Vector3 position = target.TF.position;
                 character.TF.LookAt(position);
-                if (this is Player.PlayerAttack)
-                {
-                    targetIndicator = SimplePool.Spawn<TargetIndicator>(PoolType.TargetIndicator, position, Quaternion.identity);
-                }
+                
                 Vector3 characterPosition = TF.position;
                 Vector3 direction = (position - characterPosition).normalized;
                 Quaternion quaternion = Quaternion.LookRotation(direction) * Quaternion.Euler(-90, 0, 0);
-
+                
                 weapon.Throw(character, OnHitVictim, poolType,
-                    characterPosition + TF.forward * 0.8f + Vector3.up * 0.5f, quaternion, direction, character);//, weaponData.AttackSpeed, weaponData.AttackRangeBonus);
+                    characterPosition + TF.forward * 0.8f + Vector3.up * 0.5f, quaternion, direction, character, weaponData.AttackSpeed, attackCircle.AttackRangeBonus);
                 weapon.SetVisible(false);
                 StartCoroutine(SetWeaponVisible(0.8f)); 
             }
@@ -88,7 +86,7 @@ namespace _Game.Script.GamePlay.Character.Character
 
         private Character GetTarget()
         {
-            return attackCircle.EnemiesInRange[0];
+            return attackCircle.EnemiesInRange.Count > 0 ? attackCircle.EnemiesInRange[0] : null;
         }
         private void OnHitVictim(Character attacker, Character victim)
         {

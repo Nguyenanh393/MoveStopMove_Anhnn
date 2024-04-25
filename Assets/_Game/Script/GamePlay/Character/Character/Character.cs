@@ -1,14 +1,12 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using _Game.Script.DataSO.SizeData;
-using _Game.Script.Level;
 using _Game.Script.Manager;
 using _Game.Script.OtherOpti;
+using _Game.Script.UserData;
 using _Pool.Pool;
+using _UI.Scripts;
 using _UI.Scripts.UI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Game.Script.GamePlay.Character.Character
 {
@@ -20,18 +18,21 @@ namespace _Game.Script.GamePlay.Character.Character
         [SerializeField] private TargetIndicator targetIndicator;
         [SerializeField] private SizeSO sizeSO;
         [SerializeField] private AnimController animController;
-        
+        [SerializeField] private CharacterItem characterItem;
         private AnimController.AnimType currentAnimType;
 
         private bool isDead;
         private int score = 0;
+        private float size;
 
         protected int Score => score;
+        public float Size => size;
 
         protected void OnInit()
         {
             isDead = false;
             score = 0;
+            size = 1f;
             TF.localScale = Vector3.one;
         }
         
@@ -48,7 +49,8 @@ namespace _Game.Script.GamePlay.Character.Character
 
         private void SetSize()
         {
-            TF.localScale *= Constances.Range.BonusSizeRange; // hardcode cần sửa!
+            TF.localScale *= Constances.Range.BonusSizeRange;
+            size *= Constances.Range.BonusSizeRange;
         }
 
         private void StopMove()
@@ -67,8 +69,19 @@ namespace _Game.Script.GamePlay.Character.Character
             IsDead = true;
             StopMove();
             SetAnim(AnimController.AnimType.Die);
-            StartCoroutine(Despawn(0.8f));
+            if (this == CharacterManager.Ins.TargetIndicatorHolder)
+            {
+                SimplePool.Despawn(CharacterManager.Ins.TargetIndicator);
+            }
             CharacterManager.Ins.Characters = CharacterManager.Ins.Characters.FindAll(x => x != this);
+            StartCoroutine(Despawn(0.8f));
+            
+            if (this is not Player.Player) return;
+            GameManager.ChangeState(GameState.Lose);
+            //UIManager.Ins.CloseUI<_UI.Scripts.GamePlay>();
+            UIManager.Ins.OpenUI<Lose>().SetScore(Score);
+            DataManager.Ins.SetUserDataCoin(DataManager.Ins.GetUserDataCoin() + Score);
+            SimplePool.Despawn(CharacterManager.Ins.TargetIndicator);
         }
 
         public void SetScore()
@@ -76,5 +89,7 @@ namespace _Game.Script.GamePlay.Character.Character
             score += 1;
             SetSize();
         }
+
+        public Weapon.Weapon Weapon => characterItem.CurrentWeapon;
     }
 }

@@ -273,6 +273,7 @@ MonoBehaviour:
   targetIndicator: {fileID: 0}
   sizeSO: {fileID: 11400000, guid: ae9b4ebabc0c9c444886cf1881c0ce52, type: 2}
   animController: {fileID: 1045199059697289211}
+  characterItem: {fileID: 6153718403176820575}
   playerMove: {fileID: 1045199059697289214}
   playerAttack: {fileID: 1045199059697289212}
   playerItem: {fileID: 6153718403176820575}
@@ -1089,7 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85029c37c0c4d85ba9b218fd473a96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterHolder: {fileID: 0}
+  characterHolder: {fileID: 3389380619327740320}
 --- !u!1 &3273272147669787485
 GameObject:
   m_ObjectHideFlags: 0

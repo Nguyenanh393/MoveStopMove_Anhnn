@@ -13,7 +13,7 @@ namespace _UI.Scripts.UI.SkinShopButton
         [SerializeField] private Image iconImage;
         [SerializeField] private ItemDataSOManager.ItemTypeEnum itemType;
         [SerializeField] private Image buttonImage;
-
+        
         public void SetData(Sprite icon, ItemDataSOManager.ItemTypeEnum itemType)
         {
             iconImage.sprite = icon;
@@ -22,7 +22,7 @@ namespace _UI.Scripts.UI.SkinShopButton
 
         public void OnClick()
         {
-            //Destroy(ItemSelectionUIManager.Ins.PlayerOnScene.gameObject);
+            
             CharacterManager.Ins.RespawnDancingPlayer();
             ItemSelectionUIManager.Ins.PlayerOnScene = CharacterManager.Ins.DancingPlayer;
             

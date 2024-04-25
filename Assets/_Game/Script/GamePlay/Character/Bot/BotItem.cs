@@ -12,8 +12,8 @@ namespace _Game.Script.GamePlay.Character.Bot
         {
             OnInitItem();
         }
-        
-        public void OnInitItem()
+
+        private void OnInitItem()
         {
             OnInit();
             SpawnAllItemEquippedState();
@@ -27,12 +27,8 @@ namespace _Game.Script.GamePlay.Character.Bot
             int pantIndex = Random.Range(0, ItemDataSOManager.Ins.PantSO.DataList.Count);
             ChangePant(pantIndex);
             
-            // int? shieldIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Shield);
-            // if (shieldIndex is not null)
-            // {
-            //     ChangeShield((int)shieldIndex);
-            // }
-            
+            // int shieldIndex = Random.Range(0, ItemDataSOManager.Ins.ShieldSO.DataList.Count);
+            // ChangeShield(shieldIndex);
         }
     }
 }

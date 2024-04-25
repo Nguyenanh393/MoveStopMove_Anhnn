@@ -1,4 +1,5 @@
 using _UI.Scripts.UI;
+using UnityEngine.Events;
 
 namespace _UI.Scripts
 {
@@ -8,6 +9,7 @@ namespace _UI.Scripts
         {
             GameManager.ChangeState(GameState.Setting);
             UIManager.Ins.OpenUI<Setting>();
+            GameManager.Ins.IsPause = true;
         }
     }
 }

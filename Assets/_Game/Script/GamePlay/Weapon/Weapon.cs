@@ -22,7 +22,7 @@ namespace _Game.Script.GamePlay.Weapon
         }
         
         public void Throw(Character.Character.Character character, Action<Character.Character.Character, Character.Character.Character> onHit,
-            PoolType nPoolType, Vector3 position, Quaternion rotation, Vector3 direction, Character.Character.Character owner)//, float speed, float distance) // speed, distance
+            PoolType nPoolType, Vector3 position, Quaternion rotation, Vector3 direction, Character.Character.Character owner, float speed, float distance) // speed, distance
         {
             Bullet.Bullet bullet = SimplePool.Spawn<Bullet.Bullet>(nPoolType, position, rotation);
             //bullet.gameObject.SetActive(true);
@@ -31,8 +31,8 @@ namespace _Game.Script.GamePlay.Weapon
             bullet.TF.rotation = rotation;
             bullet.Owner = owner;
             
-            // bullet.Speed = speed;
-            // bullet.Distance = distance;
+            bullet.Speed = speed;
+            bullet.Distance = distance;
             bullet.OnInit(character, onHit);
         }
     }

@@ -53,13 +53,14 @@ namespace _Game.Script.GamePlay.Weapon.Bullet
         {
             this.attacker = attacker;
             this.onHit = onHit;
-            rb.velocity = direction * 5f;
+            // TF.localScale *= owner.Size;
+            rb.velocity = direction * (Constances.Range.DefaultAttackSpeed + speed);
         }
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(Constances.ColliderTag.CHARACTER))
             {
-                Character.Character.Character victim = Cache<Character.Character.Character>.GetComponet(other);
+                Character.Character.Character victim = Cache<Character.Character.Character>.GetComponent(other);
                 if (victim == attacker)
                 {
                     return;
@@ -81,7 +82,7 @@ namespace _Game.Script.GamePlay.Weapon.Bullet
                     // }
                     // else
                     // {
-                        Invoke(nameof(OnDespawn), 1f); // time => quang duong
+                        Invoke(nameof(OnDespawn), (Constances.Range.DefaultAttackRange * owner.Size + distance + .1f)/(Constances.Range.DefaultAttackSpeed + speed)); // time => quang duong
                     // }
                     
                 }

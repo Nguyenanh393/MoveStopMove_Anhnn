@@ -11,6 +11,9 @@ namespace _Game.Script.UserData
     {
         [SerializeField] private int level;
         [SerializeField] private int coin;
+        [SerializeField] private bool vibrator;
+        [SerializeField] private bool sound;
+        [SerializeField] private bool ads;
         
         [JsonProperty]
         private Dictionary<ItemDataSOManager.ItemTypeEnum, List<int>> _itemStates = new Dictionary<ItemDataSOManager.ItemTypeEnum, List<int>>()
@@ -32,6 +35,24 @@ namespace _Game.Script.UserData
         {
             get => coin;
             set => coin = value;
+        }
+        
+        public bool Vibrator
+        {
+            get => vibrator;
+            set => vibrator = value;
+        }
+        
+        public bool Sound
+        {
+            get => sound;
+            set => sound = value;
+        }
+        
+        public bool Ads
+        {
+            get => ads;
+            set => ads = value;
         }
 
         public void SetItemStates(ItemDataSOManager.ItemTypeEnum itemType, int itemIds, int value)

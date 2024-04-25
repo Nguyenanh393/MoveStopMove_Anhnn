@@ -1,4 +1,5 @@
-﻿using _Game.Script.DataSO.ItemData;
+﻿using System;
+using _Game.Script.DataSO.ItemData;
 using _Game.Script.GamePlay.Character.Character;
 using _Game.Script.Manager;
 using _Game.Script.UserData;
@@ -11,7 +12,7 @@ namespace _Game.Script.GamePlay.Character.Player
     {
         private void OnEnable()
         {
-            OnInitItem();
+            SpawnAllItemEquippedState();
         }
 
         public void OnInitItem()
@@ -54,15 +55,15 @@ namespace _Game.Script.GamePlay.Character.Player
         private void SpawnAllItemEquippedState()
         {
             int? weaponIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Weapon);
-            if (weaponIndex is not null)
+            if (weaponIndex.HasValue)
             {
-                ChangeWeapon((int)weaponIndex);
+                ChangeWeapon(weaponIndex.Value);
             }
             
             int? hatIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Hat);
-            if (hatIndex is not null)
+            if (hatIndex.HasValue)
             {
-                ChangeHat((int)hatIndex);
+                ChangeHat(hatIndex.Value);
             }
             
             int? pantIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Pant);
@@ -72,9 +73,9 @@ namespace _Game.Script.GamePlay.Character.Player
             }
             
             int? shieldIndex = DataManager.Ins.GetItemEquipped(ItemDataSOManager.ItemTypeEnum.Shield);
-            if (shieldIndex is not null)
+            if (shieldIndex.HasValue)
             {
-                ChangeShield((int)shieldIndex);
+                ChangeShield(shieldIndex.Value);
             }
         }
     }

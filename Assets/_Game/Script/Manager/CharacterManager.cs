@@ -18,13 +18,27 @@ namespace _Game.Script.Manager
         [SerializeField] private SkinSetSO skinSetSO;
         
         private List<Character> characters = new List<Character>();
-        private Character[] botsOnScreen = new Character[Constances.Range.characterOnScreen - 1];
+        private Character[] botsOnScreen;
         private float timer;
         private int countBotSpawned = 0;
-
+        private TargetIndicator targetIndicator;
+        private Character targetIndicatorHolder;
+        
         private Player dancingPlayer;
         private Player player;
         public Player DancingPlayer => dancingPlayer;
+
+        public TargetIndicator TargetIndicator
+        {
+            get => targetIndicator;
+            set => targetIndicator = value;
+        }
+        
+        public Character TargetIndicatorHolder
+        {
+            get => targetIndicatorHolder;
+            set => targetIndicatorHolder = value;
+        }
         private void Start()
         {
             SpawnDancingPlayer(-1);
@@ -36,6 +50,7 @@ namespace _Game.Script.Manager
             {
                 RespawnBot();
             }
+            
         }
 
         public List<Character> Characters
@@ -46,8 +61,13 @@ namespace _Game.Script.Manager
         
         public void CollectAll()
         {
-            SimplePool.CollectAll();
+            for (int i = 0; i < characters.Count; i++)
+            {
+                SimplePool.Despawn(characters[i]);
+            }
             characters.Clear();
+            botsOnScreen = new Character[Constances.Range.characterOnScreen - 1];
+            SimplePool.Collect(PoolType.TargetIndicator);
         }
         public void LoadCharacter()
         {
@@ -85,6 +105,8 @@ namespace _Game.Script.Manager
             dancingPlayer.TF.localScale = new Vector3(3f, 3f, 3f);
             dancingPlayer.SetAnim(AnimController.AnimType.Dance);
             dancingPlayer.OnInitItem();
+            
+            CameraManager.Ins.GetCamera.TF.position = new Vector3(0, 10, -20);
         }
         
         public void RespawnDancingPlayer()
@@ -150,30 +172,41 @@ namespace _Game.Script.Manager
             }
             player = SimplePool.Spawn<Player>(poolType,
                 Vector3.zero, Quaternion.identity);
-            player.OnInitPlayer();
             CameraManager.Ins.GetCamera.Target = player.TF;
             characters.Add(player);
+            player.OnInitPlayer();
         }
         
         private void RespawnBot()
         {
             if (countBotSpawned >= LevelManager.Ins.NumberOfBots) return;
-            if (timer < Constances.Range.DefaultWaitSpawnTime)
+            // if (timer < Constances.Range.DefaultWaitSpawnTime)
+            // {
+            //     timer += Time.deltaTime;
+            // }
+            // else
+            // {
+            //     for (int i = 0; i < botsOnScreen.Length; i++)
+            //     {
+            //         if (botsOnScreen[i].IsDead)
+            //         {
+            //             SpawnBot(i);
+            //             countBotSpawned++;
+            //         }
+            //     }
+            //     timer = 0;
+            // }
+            
+            if (characters.Count >= 7) return;
+            for (int i = 0; i < botsOnScreen.Length; i++)
             {
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                for (int i = 0; i < botsOnScreen.Length; i++)
+                if (botsOnScreen[i].IsDead)
                 {
-                    if (botsOnScreen[i].IsDead)
-                    {
-                        SpawnBot(i);
-                        countBotSpawned++;
-                    }
+                    SpawnBot(i);
+                    countBotSpawned++;
                 }
-                timer = 0;
             }
+            
         }
         
     }

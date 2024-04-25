@@ -76,5 +76,25 @@ namespace _Game.Script.UserData
             return userData.GetItemEquipped(itemType);
         }
         
+        public bool GetVibrator()
+        {
+            return userData.Vibrator;
+        }
+        
+        public void SetVibrator(bool value)
+        {
+            userData.Vibrator = value;
+        }
+        
+        public bool GetSound()
+        {
+            return userData.Sound;
+        }
+        
+        public void SetSound(bool value)
+        {
+            userData.Sound = value;
+        }
+        
     }
 }

@@ -8,7 +8,7 @@ namespace _Game.Script.OtherOpti
     {
         private static Dictionary<Collider, T> cacheList = new Dictionary<Collider, T>();
 
-        public static T GetComponet(Collider collider)
+        public static T GetComponent(Collider collider)
         {
             if (!cacheList.ContainsKey(collider))
             {

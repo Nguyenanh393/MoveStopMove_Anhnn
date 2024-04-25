@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp:_Game.Script.DataSO.WeaponData:WeaponSo
   dataList:
   - type: {fileID: 4327284841952285586, guid: 93c671848bb1b7a48b9b903d7d5b39e9, type: 3}
-    TypeIcon: {fileID: 21300000, guid: 79b47bb526f2f407ea5a899bf93524fc, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 8072e2c3228a72f4ba3c1935e03194c4, type: 3}
     price: 0
     poolType: 18
     attackSpeed: 0
@@ -22,7 +22,7 @@ MonoBehaviour:
     bulletPoolType: 2
     weaponName: Hammer
   - type: {fileID: 2833476696677988883, guid: bd003a32275685040928824c5b8aa299, type: 3}
-    TypeIcon: {fileID: 21300000, guid: 169d45648e00348038299fc345aa6b4f, type: 3}
+    TypeIcon: {fileID: 21300000, guid: cc39e022daedf2641a394a1f66ac7c5a, type: 3}
     price: 100
     poolType: 19
     attackSpeed: 5
@@ -30,10 +30,10 @@ MonoBehaviour:
     bulletPoolType: 3
     weaponName: Knife
   - type: {fileID: 422579275621219777, guid: 7a910a0fb0778fd4b805d6dff92bf913, type: 3}
-    TypeIcon: {fileID: 21300000, guid: 0bca651f898f1479c957ebcc1fa23f88, type: 3}
+    TypeIcon: {fileID: 21300000, guid: 045847f31b61c4644b95cdac99e31865, type: 3}
     price: 400
     poolType: 20
     attackSpeed: 0
-    attackRangeBonus: 5
+    attackRangeBonus: 3
     bulletPoolType: 1
     weaponName: Boomerang

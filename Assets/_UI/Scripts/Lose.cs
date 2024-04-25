@@ -1,5 +1,4 @@
 using _Game.Script.GamePlay.Camera;
-using _Game.Script.GamePlay.Character.Character;
 using _Game.Script.Manager;
 using _UI.Scripts.UI;
 using UnityEngine;
@@ -13,13 +12,15 @@ namespace _UI.Scripts
 
         public void MainMenuButton()
         {
-            GameManager.ChangeState(GameState.MainMenu);
-            CharacterManager.Ins.CollectAll();
-            LevelManager.Ins.DespawnMap();
-            UIManager.Ins.CloseAll();
-            UIManager.Ins.OpenUI<MainMenu>();
-            CharacterManager.Ins.SpawnDancingPlayer(-1);
-            CameraManager.Ins.SetPosition(new Vector3(0, 10, -20));
+            // CharacterManager.Ins.CollectAll();
+            // LevelManager.Ins.DespawnMap();
+            // UIManager.Ins.CloseAll();
+            //
+            // GameManager.ChangeState(GameState.MainMenu);
+            // UIManager.Ins.OpenUI<MainMenu>();
+            // CharacterManager.Ins.SpawnDancingPlayer(-1);
+            // CameraManager.Ins.SetPosition(new Vector3(0, 10, -20));
+            UIManager.Ins.OpenUI<MainMenu>().OnMainScreenOn();
             Close(0);
         }
         

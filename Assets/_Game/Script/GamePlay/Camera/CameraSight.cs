@@ -11,7 +11,7 @@ namespace _Game.Script.GamePlay.Camera
         {
             if (other.CompareTag(Constances.ColliderTag.WALL))
             {
-                MeshRenderer wallRenderer = Cache<MeshRenderer>.GetComponet(other);
+                MeshRenderer wallRenderer = Cache<MeshRenderer>.GetComponent(other);
                 wallRenderer.material = transparentMaterial;
             }
         }
@@ -20,7 +20,7 @@ namespace _Game.Script.GamePlay.Camera
         {
             if (other.CompareTag(Constances.ColliderTag.WALL))
             {
-                MeshRenderer wallRenderer = Cache<MeshRenderer>.GetComponet(other);
+                MeshRenderer wallRenderer = Cache<MeshRenderer>.GetComponent(other);
                 wallRenderer.material = defaultMaterial;
             }
         }

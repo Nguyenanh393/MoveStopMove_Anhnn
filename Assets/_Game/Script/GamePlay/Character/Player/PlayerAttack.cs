@@ -16,7 +16,7 @@ namespace _Game.Script.GamePlay.Character.Player
             get => attacked;
             set => attacked = value;
         }
-    
+        
         public void OnInit()
         {
             attacked = false;
