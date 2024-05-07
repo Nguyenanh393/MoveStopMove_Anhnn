@@ -23,7 +23,12 @@ namespace _Game.Script.OtherOpti
 
         public class Data
         {
-            public const string UserData = "UserData";
+            public const string UserData = "/UserData";
+            public const string HATFILE = "/HatData.json";
+            public const string PANTFILE = "/PantData.json";
+            public const string SHIELDFILE = "/ShieldData.json";
+            public const string SKINSETFILE = "/SkinSetData.json";
+            public const string WEAPONFILE = "/WeaponData.json";
         }
     }
 }

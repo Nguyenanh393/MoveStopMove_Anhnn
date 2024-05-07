@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: ShieldSO
   m_EditorClassIdentifier: 
   dataList:
-  - type: {fileID: -4799131230455147456, guid: 7d42da9e79e4c6b4e9fe12e88d890dd0, type: 3}
+  - type: {fileID: 2528787038526850715, guid: 930ccc276ec5c524b84fab21a3be273d, type: 3}
     TypeIcon: {fileID: 21300000, guid: 5033499010ad59241ad2cbdc6b1f9694, type: 3}
     price: 0
     poolType: 21
     goldBonusPercent: 0
-  - type: {fileID: -265562780834846249, guid: 09e6c32e8545dc143a68ba692c556617, type: 3}
+  - type: {fileID: 1036707077516345730, guid: 431450e91e6cb3e4ea49838acad0a94c, type: 3}
     TypeIcon: {fileID: 21300000, guid: 3dedbea6f56343249805bb0aee8693f9, type: 3}
     price: 0
     poolType: 22

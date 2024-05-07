@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Game.Script.DataSO.Data;
+using UnityEngine;
 
 namespace _Game.Script.DataSO.SizeData
 {

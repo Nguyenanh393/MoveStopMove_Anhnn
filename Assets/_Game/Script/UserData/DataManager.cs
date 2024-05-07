@@ -58,11 +58,25 @@ namespace _Game.Script.UserData
         {
             string json = JsonConvert.SerializeObject(userData);
             PlayerPrefs.SetString(Constances.Data.UserData, json);
+            FileStream fileStream = new FileStream(Application.persistentDataPath + "/UserData.json", FileMode.Create);
+            StreamWriter writer = new StreamWriter(fileStream);
+            writer.Write(json);
+            writer.Close();
+            
+            // string json = JsonConvert.SerializeObject(userData);
+            // PlayerPrefs.SetString(Constances.Data.UserData, json);
         }
 
         private void LoadUserData()
         {
-            string json = PlayerPrefs.GetString(Constances.Data.UserData);
+            //
+            // string json = PlayerPrefs.GetString(Constances.Data.UserData);
+            // userData = JsonConvert.DeserializeObject<UserData>(json);
+            
+            FileStream fileStream = new FileStream(Application.persistentDataPath + "/UserData.json", FileMode.Open);
+            StreamReader reader = new StreamReader(fileStream);
+            string json = reader.ReadToEnd();
+            reader.Close();
             userData = JsonConvert.DeserializeObject<UserData>(json);
         }
         

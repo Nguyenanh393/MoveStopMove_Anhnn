@@ -41,6 +41,7 @@ namespace _Game.Script.Manager
         }
         private void Start()
         {
+            
             SpawnDancingPlayer(-1);
         }
 
