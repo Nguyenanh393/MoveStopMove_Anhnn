@@ -1654,13 +1654,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 9
-  anim: {fileID: 0}
+  anim: {fileID: 534926729385938427}
   animTransform: {fileID: 5150318581146603183}
   characterAnim: {fileID: 5150318581146603186}
   targetIndicator: {fileID: 0}
   sizeSO: {fileID: 11400000, guid: ae9b4ebabc0c9c444886cf1881c0ce52, type: 2}
   animController: {fileID: 5150318581146603184}
-  characterItem: {fileID: 0}
+  characterItem: {fileID: -2454728924355521901}
   playerMove: {fileID: 5150318581146603189}
   playerAttack: {fileID: 5150318581146603191}
   playerItem: {fileID: -2454728924355521901}

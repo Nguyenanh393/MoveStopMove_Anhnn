@@ -2782,7 +2782,7 @@ MonoBehaviour:
   targetIndicator: {fileID: 0}
   sizeSO: {fileID: 11400000, guid: ae9b4ebabc0c9c444886cf1881c0ce52, type: 2}
   animController: {fileID: 9206480741839921874}
-  characterItem: {fileID: 0}
+  characterItem: {fileID: -7478098267355909271}
   playerMove: {fileID: 9206480741839921879}
   playerAttack: {fileID: 9206480741839921877}
   playerItem: {fileID: -7478098267355909271}
