@@ -699,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userData:
     level: 0
-    coin: 0
+    coin: 10000
     vibrator: 0
     sound: 0
     ads: 0
