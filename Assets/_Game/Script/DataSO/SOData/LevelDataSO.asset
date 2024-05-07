@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - mapId: 0
-    numberOfBots: 50
+    numberOfBots: 10
   - mapId: 1
     numberOfBots: 50

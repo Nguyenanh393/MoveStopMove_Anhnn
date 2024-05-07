@@ -41,15 +41,6 @@ namespace _Game.Script.GamePlay.Character.Player
                     currentState.OnExecute(this);
                 } 
             }
-
-            if (CharacterManager.Ins.Characters.Count == 1 && CharacterManager.Ins.Characters[0] == this)
-            {
-                UIManager.Ins.CloseAll();
-                UIManager.Ins.OpenUI<Win>();
-                GameManager.ChangeState(GameState.Win);
-                UIManager.Ins.GetUI<Win>().SetScore(Score);
-                DataManager.Ins.SetUserDataCoin(DataManager.Ins.GetUserDataCoin() + Score);
-            }
         }
         
         public void ChangeState(IState<Player> state)
@@ -93,6 +84,7 @@ namespace _Game.Script.GamePlay.Character.Player
         public void OnInitItem()
         {
             playerItem.OnInitItem();
+            playerAttack.OnInit();
         }
         
     }

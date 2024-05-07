@@ -76,6 +76,16 @@ namespace _Game.Script.GamePlay.Character.Character
             CharacterManager.Ins.Characters = CharacterManager.Ins.Characters.FindAll(x => x != this);
             StartCoroutine(Despawn(0.8f));
             
+            if (CharacterManager.Ins.Characters.Count == 1 && CharacterManager.Ins.Characters[0] == this)
+            {
+                UIManager.Ins.CloseAll();
+                UIManager.Ins.OpenUI<Win>();
+                GameManager.ChangeState(GameState.Win);
+                UIManager.Ins.GetUI<Win>().SetScore(Score);
+                DataManager.Ins.SetUserDataCoin(DataManager.Ins.GetUserDataCoin() + Score);
+                return;
+            }
+            
             if (this is not Player.Player) return;
             GameManager.ChangeState(GameState.Lose);
             //UIManager.Ins.CloseUI<_UI.Scripts.GamePlay>();
